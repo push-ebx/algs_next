@@ -1,0 +1,17 @@
+.title {
+  color: var(--text-color);
+  font-size: 2.5rem;
+  font-weight: bold;
+  text-align: center;
+  margin: 0 1rem 50px;
+  overflow-wrap: break-word;
+
+  &::before {
+    content: "/// ";
+    color: var(--red-color);
+  }
+
+  @media screen and (max-width: 400px) {
+    //font-size: var(--title-color-xs);
+  }
+}
