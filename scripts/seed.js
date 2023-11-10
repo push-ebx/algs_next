@@ -6,7 +6,7 @@ async function main() {
 
   await client.sql`
     CREATE TABLE IF NOT EXISTS articles (
-      id INT NOT NULL UNIQUE PRIMARY KEY,
+      id INT NOT NULL UNIQUE PRIMARY KEY AUTO_INCREMENT,
       title VARCHAR(255) NOT NULL,
       author VARCHAR(255) NOT NULL,
       category VARCHAR(255) NOT NULL,
