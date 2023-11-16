@@ -12,10 +12,10 @@ export default async function Layout({ children }: {children: React.ReactNode}) 
   return (
     <>
       <div className={styles.main}>
-          <div className={styles.tree}>
-            <h2 style={{marginBottom: 20}}>{tree.title}</h2>
-            <Tree tree={tree}/>
-          </div>
+        <div className={styles.wrapper_tree}>
+          <h2 style={{marginBottom: 20}}>{tree.title}</h2>
+          <Tree className={styles.tree} tree={tree}/>
+        </div>
         <div>{children}</div>
       </div>
       <Image className={clsx("icon", styles.collapseButton)} src={collapseButton} alt="collapseButton"/>
