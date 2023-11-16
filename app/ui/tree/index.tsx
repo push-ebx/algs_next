@@ -1,6 +1,6 @@
 "use client"
 import styles from './tree.module.scss'
-import React, {useEffect, useRef, useState} from "react";
+import React, {CSSProperties, useEffect, useRef, useState} from "react";
 import clsx from 'clsx'
 import Link from 'next/link';
 import * as Icons from './icons'
@@ -43,9 +43,8 @@ const Item = React.memo<
     },
   })
 
-  const Icon = Icons[`${children ? (isOpen ? 'Minus' : 'Plus') : 'Close'}SquareO`]
+  const Icon: React.FC<{style?: CSSProperties, onClick?: () => any}> = Icons[`${children ? (isOpen ? 'Minus' : 'Plus') : 'Close'}SquareO`]
 
-  // @ts-ignore
   return (
     <Frame>
       <Icon style={{ ...toggle, opacity: children ? 1 : 0.5 }} onClick={() => setOpen(!isOpen)} />
