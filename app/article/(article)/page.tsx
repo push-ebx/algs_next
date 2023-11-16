@@ -18,6 +18,7 @@ export default async function Article({
       <CustomMarkdown className={styles.markdown}>
         {article ? article.content : '# Статья не найдена!'}
       </CustomMarkdown>
+
     </div>
   )
 }

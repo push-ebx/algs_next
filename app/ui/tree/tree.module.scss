@@ -1,12 +1,6 @@
 .tree {
-  position: fixed;
-  //max-height: 100vh;
-  //height: 100%;
-  //max-height: calc(100vh - 100px);
-  max-height: 77vh;
+  height: 100%;
   overflow-y: auto;
-  max-width: 17rem;
   padding-right: 10px;
   width: 100%;
-  margin-bottom: 100px;
 }

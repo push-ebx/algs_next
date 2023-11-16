@@ -63,8 +63,6 @@ const Item = React.memo<
 const Tree = ({tree, className}: Props) => { // add active category and sub and article
   return (
     <div className={clsx(styles.tree, className)}>
-      <h2 style={{marginBottom: 20}}>{tree.title}</h2>
-
       {tree.child?.length && tree.child.map((category: TreeType, i) => (
         <Item defaultOpen name={category.title} key={i}>
           {category.child?.length && category.child.map((subcategory: TreeType, j) => (
