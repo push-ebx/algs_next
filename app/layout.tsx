@@ -9,13 +9,10 @@ export default function RootLayout({
 }: {
   children: React.ReactNode
 }) {
-  // @ts-ignore
   return (
     <html lang="en">
-
       <body className={inter.className}>
         <Header />
-        <Katex />
         {children}
       </body>
     </html>

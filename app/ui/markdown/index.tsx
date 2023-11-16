@@ -3,7 +3,7 @@
 import styles from './markdown.module.scss';
 import Markdown from "markdown-to-jsx";
 import { CSSProperties } from "react";
-import {Paragraph, Subtitle, Title, Li, RF, Image, Katex} from "@/app/ui";
+import {Paragraph, Subtitle, Title, Li, RF, Katex} from "@/app/ui";
 
 type Props = {
   children?: string,

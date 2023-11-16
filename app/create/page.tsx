@@ -8,7 +8,6 @@ import {Popup} from "@/app/ui/popup";
 import {createArticle} from "@/app/article/api/data";
 import {Article} from "@/app/lib/types";
 import clsx from "clsx";
-import Image from "next/image";
 
 export default function Create() {
   const [value, setValue] = useState<string | undefined>();
