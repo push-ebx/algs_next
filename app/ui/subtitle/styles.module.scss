@@ -1,11 +1,11 @@
 .subtitle {
   color: var(--text-color);
-  font-size: 1.3rem;
+  font-size: 25px;
   font-weight: bold;
   margin: 20px 0;
 
   &::before {
-    content: "// ";
+    content: "/ ";
     color: var(--red-color);
     position: relative;
     top: -2px;

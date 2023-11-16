@@ -1,0 +1,46 @@
+@import "../article/layout.module";
+
+.md-editor {
+  position: relative;
+  width: 50vw;
+  height: auto !important;
+  border-radius: 5px;
+  min-height: 300px !important;
+  //box-shadow: none !important;
+  border: none;
+  box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, .234);
+  background-color: #FFFFFF !important;
+  color: var(--text-color) !important;
+}
+
+.md-viewer {
+  position: relative;
+  width: 50vw;
+  border-radius: 5px;
+  min-height: 300px !important;
+  box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, .234);
+  background-color: #FFFFFF !important;
+  padding: 2rem;
+}
+
+.editor {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.main {
+  display: flex;
+  justify-content: center;
+  justify-items: center;
+  column-gap: .5rem;
+
+  .popup {
+
+    .inputs {
+      display: flex;
+      flex-direction: column;
+      row-gap: 10px;
+    }
+  }
+}

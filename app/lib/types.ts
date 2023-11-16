@@ -2,14 +2,15 @@ export interface Article {
   id?: number,
   title?: string;
   author?: string;
-  file_url?: string;
   category?: string;
   subcategory?: string;
+  content?: string;
   is_draw?: boolean;
 }
 
-export interface ArticleByCategory {
-  category: {
-    subcategory: Article[]
-  }
+export interface Tree {
+  category: string,
+  title: string,
+  subcategory?: string,
+  id: number
 }

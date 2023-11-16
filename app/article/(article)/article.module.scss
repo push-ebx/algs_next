@@ -1,20 +1,33 @@
-.main {
-  display: flex;
-  justify-content: center;
-  width: 100%;
-  height: 100%;
-  background: var(--background-color);
-}
+@import "../layout.module";
 
 .container {
   width: 100%;
   min-height: 70vh;
-  margin: 2rem 25rem;
-  border-radius: 0.3125rem;
+  border-radius: 23px;
   background: var(--background-article-color);
-  box-shadow: -2px 2px 12px 0px rgba(0, 0, 0, 0.25), 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+  padding: 50px 30px;
+  //box-shadow: -2px 2px 12px 0px rgba(0, 0, 0, 0.25), 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+  display: flex;
+  justify-content: center;
+  //align-items: center;
 
-  @media screen and (max-width: 1000px) {
-    margin: 2rem 5rem;
+  .markdown {
+    max-width: 40rem;
+    width: 100%;
+
+    ::-moz-selection {
+      color: #FFFFFF;
+      background: var(--red-color);
+    }
+
+    ::selection {
+      color: #FFFFFF;
+      background: var(--red-color);
+    }
+    //height: 100%;
+  }
+
+  @include for-tablet-down() {
+    border-radius: 0;
   }
 }

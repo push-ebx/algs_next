@@ -3,26 +3,32 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "prisma generate && next dev",
+    "dev": "next dev",
     "build": "prisma generate && prisma db push && next build",
     "build_": "prisma generate && prisma db push && prisma db seed && next build",
     "start": "next start",
     "lint": "next lint",
-    "seed": "node -r dotenv/config ./prisma/seed.ts"
+    "seed": "node -r dotenv/config ./scripts/seed.js"
   },
   "prisma": {
     "seed": "ts-node --compiler-options {\"module\":\"CommonJS\"} prisma/seed.ts"
   },
   "dependencies": {
     "@prisma/client": "^5.5.2",
+    "@react-spring/web": "^9.7.3",
+    "@uiw/react-md-editor": "^3.25.6",
     "@vercel/postgres": "^0.5.1",
     "bcrypt": "^5.1.1",
+    "clsx": "^2.0.0",
     "dotenv": "^16.3.1",
     "markdown-to-jsx": "^7.3.2",
     "next": "14.0.1",
     "react": "^18",
     "react-dom": "^18",
-    "sass": "^1.69.5"
+    "react-use-measure": "^2.1.1",
+    "reactflow": "^11.10.1",
+    "sass": "^1.69.5",
+    "styled-components": "^6.1.1"
   },
   "devDependencies": {
     "@types/node": "^20",
