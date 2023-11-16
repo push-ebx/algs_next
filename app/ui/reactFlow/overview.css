@@ -1,0 +1,38 @@
+.react-flow__node {
+  /*color: var(--red-color);*/
+}
+
+.red {
+  border-color: var(--red-color);
+}
+
+.green {
+  border-color: var(--green-color);
+}
+
+.blue {
+  border-color: var(--blue-color);
+}
+
+.purple {
+  border-color: var(--purple-color);
+}
+
+.circle {
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  display: flex;
+  justify-content: center;
+  /*border-color: var(--red-color);*/
+  align-items: center;
+  font-weight: 700;
+}
+
+.reactFlowWrapper.center {
+  margin: 0 auto;
+}
+
+.reactFlowWrapper.right {
+  margin: 0 0 0 auto;
+}

@@ -1,6 +1,6 @@
 // "use client";
 
-import styles from './markdown.module.scss'
+import styles from './markdown.module.scss';
 import Markdown from "markdown-to-jsx";
 import { CSSProperties } from "react";
 import {Paragraph, Subtitle, Title, Li, Test} from "@/app/ui";
@@ -22,7 +22,7 @@ export const CustomMarkdown = (props: Props) => {
             h2: { component: Subtitle },
             p: { component: Paragraph },
             li: { component: Li },
-            ReactFlow: { component: Test },
+            RF: { component: Test },
             // img: { component: Image },
           }
         }}
