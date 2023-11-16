@@ -3,8 +3,7 @@
 import styles from './markdown.module.scss';
 import Markdown from "markdown-to-jsx";
 import { CSSProperties } from "react";
-import {Paragraph, Subtitle, Title, Li, Test} from "@/app/ui";
-// import Image from "next/image";
+import {Paragraph, Subtitle, Title, Li, RF, Image, Katex} from "@/app/ui";
 
 type Props = {
   children?: string,
@@ -22,7 +21,8 @@ export const CustomMarkdown = (props: Props) => {
             h2: { component: Subtitle },
             p: { component: Paragraph },
             li: { component: Li },
-            RF: { component: Test },
+            RF: { component: RF },
+            katex: { component: Katex }
             // img: { component: Image },
           }
         }}

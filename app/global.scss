@@ -38,7 +38,7 @@ a {
 }
 
 hr {
-  margin: 40px 0;
+  margin-bottom: 4vh;
 }
 
 ::-webkit-scrollbar {
@@ -75,12 +75,16 @@ ul {
 }
 
 img {
+  position: relative;
   font-style: italic;
   background-repeat: no-repeat;
   background-size: cover;
   shape-margin: 1rem;
   max-width: 100%;
+  width: 100%;
   height: auto;
   vertical-align: middle;
   border-radius: 7px;
+
+  //margin: -10px -1.5rem 0 0;
 }

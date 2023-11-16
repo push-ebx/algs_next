@@ -33,7 +33,7 @@ type props = {
   align?: string,
 }
 
-const Test = ({width="640px", height="500px", nodes="", edges="", align="center"}: props) => {
+const RF = ({width="640px", height="500px", nodes="", edges="", align="center"}: props) => {
   let result = (
     <div style={{width: '100%', height: `200px`}}>Ошибка!</div>
   );
@@ -55,12 +55,14 @@ const Test = ({width="640px", height="500px", nodes="", edges="", align="center"
         <ReactFlow
           nodes={parsed_nodes}
           edges={parsed_edges}
+          fitView={true}
+
           // onNodesChange={onNodesChange}
           // onEdgesChange={onEdgesChange}
           // onConnect={onConnect}
         >
           <Controls />
-          <Background gap={12} size={1} />
+          <Background gap={15} size={1} />
         </ReactFlow>
       </div>
     )
@@ -71,4 +73,4 @@ const Test = ({width="640px", height="500px", nodes="", edges="", align="center"
   return result
 }
 
-export {Test}
+export {RF}

@@ -2,6 +2,14 @@
   /*color: var(--red-color);*/
 }
 
+.react-flow__handle {
+  background: var(--red-color) !important;
+}
+
+.react-flow__node-default.selectable.selected {
+  box-shadow: none;
+}
+
 .red {
   border-color: var(--red-color);
 }

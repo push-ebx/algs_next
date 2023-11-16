@@ -1,6 +1,7 @@
 @import "../layout.module";
 
 .container {
+  position: relative;
   width: 100%;
   height: auto;
   border-radius: 23px;
@@ -27,5 +28,6 @@
 
   @include for-tablet-down() {
     border-radius: 0;
+    padding: 50px 10px;
   }
 }

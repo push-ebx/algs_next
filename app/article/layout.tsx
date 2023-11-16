@@ -18,7 +18,7 @@ export default async function Layout({ children }: {children: React.ReactNode}) 
         </div>
         <div>{children}</div>
       </div>
-      <Image className={clsx("icon", styles.collapseButton)} src={collapseButton} alt="collapseButton"/>
+      {/*<Image className={clsx("icon", styles.collapseButton)} src={collapseButton} alt="collapseButton"/>*/}
     </>
   )
 }

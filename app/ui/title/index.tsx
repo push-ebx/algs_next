@@ -8,8 +8,8 @@ type Props = {
 
 export const Title = (props: Props) => {
   return (
-    <div className={`${styles.title} ${props.className}`}>
+    <h1 className={`${styles.title} ${props.className}`}>
       {props.children}
-    </div>
+    </h1>
   );
 };

@@ -7,6 +7,6 @@ type Props = {
 
 export const Paragraph = ({children}: Props) => {
   return (
-    <h1 className={styles.paragraph}>{children}</h1>
+    <p className={styles.paragraph}>{children}</p>
   );
 };

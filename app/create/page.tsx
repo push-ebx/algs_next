@@ -7,6 +7,8 @@ import {CustomMDEditor} from "@/app/ui/markdownEditor";
 import {Popup} from "@/app/ui/popup";
 import {createArticle} from "@/app/article/api/data";
 import {Article} from "@/app/lib/types";
+import clsx from "clsx";
+import Image from "next/image";
 
 export default function Create() {
   const [value, setValue] = useState<string | undefined>();
@@ -37,7 +39,7 @@ export default function Create() {
         <CustomMDEditor
           value={value}
           setValue={setValue}
-          className={styles['md-editor']}
+          className={clsx(styles['md-editor'], styles.customMDEditor)}
         />
 
         <CustomMarkdown
@@ -45,6 +47,7 @@ export default function Create() {
         >
           {value}
         </CustomMarkdown>
+
         <Popup className={styles.popup} title={"Title"} isOpen={isOpen} closePopup={() => setIsOpen(false)}>
           <div className={styles.inputs}>
             <input
