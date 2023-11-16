@@ -28,7 +28,7 @@ function usePrevious<T>(value: T) {
 const Item = React.memo<
   React.HTMLAttributes<HTMLDivElement> & {
   defaultOpen?: boolean
-  name: string | JSX.Element
+  name?: string | JSX.Element
 }
 >(({ children, name, defaultOpen = false }) => {
   const [isOpen, setOpen] = useState(defaultOpen)
@@ -45,6 +45,7 @@ const Item = React.memo<
 
   const Icon = Icons[`${children ? (isOpen ? 'Minus' : 'Plus') : 'Close'}SquareO`]
 
+  // @ts-ignore
   return (
     <Frame>
       <Icon style={{ ...toggle, opacity: children ? 1 : 0.5 }} onClick={() => setOpen(!isOpen)} />
