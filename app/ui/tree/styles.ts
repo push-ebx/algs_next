@@ -21,6 +21,7 @@ export const Title = styled('span')`
   &:hover {
     color: var(--primary-color);
   }
+  user-select: none;
 `
 
 export const Content = styled(animated.div)`

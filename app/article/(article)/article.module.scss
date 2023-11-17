@@ -2,17 +2,34 @@
 
 .container {
   position: relative;
-  width: 100%;
   height: auto;
   border-radius: 23px;
   background: var(--background-article-color);
   padding: 50px 30px;
   display: flex;
+  flex-direction: column;
   justify-content: center;
+  align-items: center;
+  overflow-y: hidden;
+
+  .category_path_author {
+    display: flex;
+    justify-content: space-between;
+    max-width: 40rem;
+    width: 100%;
+    padding: 0 1.5rem;
+
+    .category_path, .author {
+      font-size: .8em;
+      color: var(--text-color);
+      opacity: .5;
+    }
+  }
 
   .markdown {
     max-width: 40rem;
     width: 100%;
+    overflow-y: hidden;
 
     ::-moz-selection {
       color: #FFFFFF;

@@ -48,7 +48,7 @@ const Item = React.memo<
   return (
     <Frame>
       <Icon style={{ ...toggle, opacity: children ? 1 : 0.5 }} onClick={() => setOpen(!isOpen)} />
-      <Title className={styles.title}>{name}</Title>
+      <Title className={styles.title} onClick={() => setOpen(!isOpen)}>{name}</Title>
       <Content
         style={{
           opacity,
