@@ -26,11 +26,11 @@ export default function Edit({
   const [isOpen, setIsOpen] = useState<boolean>(false);
 
   useEffect(() => {
-    (async () => {
-      const res = await fetchArticleByID(searchParams?.id);
+    fetchArticleByID(searchParams?.id).then(res => {
+      console.log(res);
       setValue(res?.content);
       setID(res?.id);
-    })()
+    });
   }, [])
 
   const onSave = async () => {
