@@ -6,18 +6,15 @@ import {CustomMarkdown} from "@/app/ui";
 import {CustomMDEditor} from "@/app/ui/markdownEditor";
 import {Popup} from "@/app/ui/popup";
 import {createArticle, fetchArticleByID, updateArticle} from "@/app/article/api/data";
+import { useSearchParams } from 'next/navigation';
 import {Article} from "@/app/lib/types";
 import clsx from "clsx";
 
-export default function Edit({
-     searchParams,
-   }: {
-  searchParams?: {
-    id?: number;
-  };
-}) {
+export default function Edit() {
+  const searchParams = useSearchParams()
+  const id = searchParams.get('id');
+
   const [value, setValue] = useState<string | undefined>();
-  const [id, setID] = useState<number | undefined>();
   const [title, setTitle] = useState<string | undefined>();
   const [author, setAuthor] = useState<string | undefined>();
   const [category, setCategory] = useState<string | undefined>();
@@ -26,16 +23,16 @@ export default function Edit({
   const [isOpen, setIsOpen] = useState<boolean>(false);
 
   useEffect(() => {
-    fetchArticleByID(searchParams?.id).then(res => {
+    console.log(id);
+    fetchArticleByID(+id!).then(res => {
       console.log(res);
       setValue(res?.content);
-      setID(res?.id);
     });
   }, [])
 
   const onSave = async () => {
     const article: Article = {
-      id,
+      id: +id!,
       title,
       category,
       subcategory,
