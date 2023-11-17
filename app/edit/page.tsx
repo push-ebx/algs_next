@@ -5,7 +5,7 @@ import styles from './edit.module.scss';
 import {CustomMarkdown} from "@/app/ui";
 import {CustomMDEditor} from "@/app/ui/markdownEditor";
 import {Popup} from "@/app/ui/popup";
-import {createArticle, fetchArticleByID, updateArticle} from "@/app/article/api/data";
+import {fetchArticleByID, updateArticle} from "@/app/article/api/data";
 import { useSearchParams } from 'next/navigation';
 import {Article} from "@/app/lib/types";
 import clsx from "clsx";
@@ -23,9 +23,7 @@ export default function Edit() {
   const [isOpen, setIsOpen] = useState<boolean>(false);
 
   useEffect(() => {
-    console.log(id);
     fetchArticleByID(+id!).then(res => {
-      console.log(res);
       setValue(res?.content);
     });
   }, [])
