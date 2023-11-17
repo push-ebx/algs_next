@@ -1,19 +1,17 @@
-// "use client";
-
 import styles from './markdown.module.scss';
 import Markdown from "markdown-to-jsx";
 import { CSSProperties } from "react";
-import {Paragraph, Subtitle, Title, Li, RF, Katex} from "@/app/ui";
+import {Paragraph, Subtitle, Title, Li, RF, Katex, Code} from "@/app/ui";
 
 type Props = {
   children?: string,
-  style?: CSSProperties,
-  className?: string
+  className?: string,
+  style?: CSSProperties
 }
 
-export const CustomMarkdown = (props: Props) => {
+export const CustomMarkdown = ({children, className, style}: Props) => {
   return (
-    <div className={`${styles['md-viewer']} ${props.className}`} >
+    <div className={`${styles['md-viewer']} ${className}`} >
       <Markdown
         options={{
           overrides: {
@@ -22,13 +20,13 @@ export const CustomMarkdown = (props: Props) => {
             p: { component: Paragraph },
             li: { component: Li },
             RF: { component: RF },
-            katex: { component: Katex }
-            // img: { component: Image },
+            katex: { component: Katex },
+            code: { component: Code }
           }
         }}
-        style={props.style}
+        style={style}
       >
-        {props.children ?? ''}
+        {children ?? ''}
       </Markdown>
     </div>
   )
