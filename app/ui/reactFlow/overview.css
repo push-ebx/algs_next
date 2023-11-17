@@ -1,9 +1,9 @@
 .react-flow__node {
-  /*color: var(--red-color);*/
+  border-color: #555555;
 }
 
 .react-flow__handle {
-  background: var(--red-color) !important;
+  background: var(--primary-color) !important;
 }
 
 .react-flow__node-default.selectable.selected {
@@ -11,7 +11,7 @@
 }
 
 .red {
-  border-color: var(--red-color);
+  border-color: var(--primary-color);
 }
 
 .green {
@@ -19,7 +19,7 @@
 }
 
 .blue {
-  border-color: var(--blue-color);
+  border-color: var(--red-color);
 }
 
 .purple {
@@ -28,13 +28,25 @@
 
 .circle {
   border-radius: 50%;
-  width: 60px;
-  height: 60px;
+  width: 50px;
+  height: 50px;
   display: flex;
   justify-content: center;
-  /*border-color: var(--red-color);*/
   align-items: center;
   font-weight: 700;
+}
+
+.square {
+  width: 50px;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: 700;
+}
+
+.reactFlowWrapper {
+  margin: 20px 0;
 }
 
 .reactFlowWrapper.center {

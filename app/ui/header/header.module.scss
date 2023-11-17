@@ -29,13 +29,13 @@
       &::before {
         //margin: 0 5px;
         content: "[";
-        color: var(--red-color);
+        color: var(--primary-color);
       }
 
       &::after {
         //margin: 0 5px;
         content: "]";
-        color: var(--red-color);
+        color: var(--primary-color);
       }
     }
   }

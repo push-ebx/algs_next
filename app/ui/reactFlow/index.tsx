@@ -18,7 +18,7 @@ import {useCallback} from "react";
         {"source": "1", "target": "3"},
         {"source": "3", "target": "4"}
     ]'
-    height={500}
+    height={500px}
     width={100%}
     align='center'
 />

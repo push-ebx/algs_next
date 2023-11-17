@@ -8,7 +8,7 @@
 
   &::before {
     content: "// ";
-    color: var(--red-color);
+    color: var(--primary-color);
   }
 
   @media screen and (max-width: 400px) {

@@ -5,25 +5,20 @@ import 'katex/dist/katex.min.css';
 import katex from 'katex';
 
 type Props = {
-  expr?: string
+  expr?: string,
+  line?: boolean
 }
 
-const KaTeXComponent = ({texExpression}: {texExpression?: string}) => {
+export const Katex = ({expr, line}: Props) => {
   const containerRef = useRef();
 
   useEffect(() => {
-    texExpression &&
-    typeof(texExpression) === 'string' &&
+    expr &&
+    typeof(expr) === 'string' &&
     containerRef.current &&
-    katex.render(texExpression, containerRef.current, {throwOnError: false});
-  }, [texExpression]);
+    katex.render(expr, containerRef.current, {throwOnError: false});
+  }, [expr]);
 
   // @ts-ignore
-  return <div ref={containerRef} />
-}
-
-export const Katex = ({expr}: Props) => {
-  return (
-    <KaTeXComponent texExpression={expr}/>
-  );
+  return <div ref={containerRef} style={{display: line ? "inline" : "block"}}/>
 };

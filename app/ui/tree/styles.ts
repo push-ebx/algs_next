@@ -19,7 +19,7 @@ export const Title = styled('span')`
   cursor: pointer;
 
   &:hover {
-    color: var(--red-color);
+    color: var(--primary-color);
   }
 `
 
