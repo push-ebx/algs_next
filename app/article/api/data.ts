@@ -82,3 +82,17 @@ export async function createArticle(article: Article) {
     throw new Error('Failed to create article.');
   }
 }
+
+export async function updateArticle(article: Article) {
+  try {
+    const client = await db.connect();
+    const data = await client.sql`
+      UPDATE articles
+      SET title=${article.title}, author=${article.author}, category=${article.category}, subcategory=${article.subcategory}, content=${article.content}, is_draw=${article.is_draw}
+      WHERE id=${article.id};
+    `;
+  } catch (error) {
+    console.error('Database Error:', error);
+    throw new Error('Failed to update article.');
+  }
+}
