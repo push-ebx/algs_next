@@ -7,7 +7,6 @@ import {TreeType} from "@/app/ui";
 
 export async function fetchAllArticles() {
   try {
-    console.log(process.env.POSTGRES_URL)
     const client = await db.connect();
 
     const data = await client.sql<Tree>`
@@ -77,6 +76,20 @@ export async function createArticle(article: Article) {
       INSERT INTO articles (title, author, category, subcategory, content, is_draw)
       VALUES (${article.title}, ${article.author}, ${article.category}, ${article.subcategory}, ${article.content}, ${article.is_draw});
     `;
+  } catch (error) {
+    console.error('Database Error:', error);
+    throw new Error('Failed to create article.');
+  }
+}
+
+export async function getLastArticleID() {
+  try {
+    const client = await db.connect();
+    const data = await client.sql`
+        SELECT MAX(id) FROM articles;
+    `;
+
+    return data.rows[0].max;
   } catch (error) {
     console.error('Database Error:', error);
     throw new Error('Failed to create article.');

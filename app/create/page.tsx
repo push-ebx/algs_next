@@ -2,12 +2,13 @@
 
 import React, {useState} from "react";
 import styles from './create.module.scss';
-import {CustomMarkdown} from "@/app/ui";
+import {Button, CustomMarkdown, Input} from "@/app/ui";
 import {CustomMDEditor} from "@/app/ui/markdownEditor";
 import {Popup} from "@/app/ui/popup";
-import {createArticle} from "@/app/article/api/data";
+import {createArticle, getLastArticleID} from "@/app/article/api/data";
 import {Article} from "@/app/lib/types";
 import clsx from "clsx";
+import { useRouter } from 'next/navigation';
 
 export default function Create() {
   const [value, setValue] = useState<string | undefined>();
@@ -18,7 +19,11 @@ export default function Create() {
   const [isDraw, setIsDraw] = useState<boolean>(false);
   const [isOpen, setIsOpen] = useState<boolean>(false);
 
+  const router = useRouter();
+
   const onSave = async () => {
+    if (!title || !value || !author || !category || !subcategory) return;
+
     const article: Article = {
       title,
       category,
@@ -30,54 +35,53 @@ export default function Create() {
 
     await createArticle(article);
     setIsOpen(false);
+    const article_id = await getLastArticleID();
+    router.push(`/article?id=${article_id}`, { scroll: false });
   }
 
   return (
     <div className={styles.editor}>
-      <div className={styles.main}>
+      <div className={styles.editor__main}>
         <CustomMDEditor
           value={value}
           setValue={setValue}
           className={clsx(styles['md-editor'], styles.customMDEditor)}
         />
-
-        <CustomMarkdown
-          className={styles['md-viewer']}
-        >
+        <CustomMarkdown className={styles['md-viewer']}>
           {value}
         </CustomMarkdown>
-
-        <Popup className={styles.popup} title={"Title"} isOpen={isOpen} closePopup={() => setIsOpen(false)}>
-          <div className={styles.inputs}>
-            <input
-              onChange={e => setTitle(e.target.value)}
-              type="text"
-              placeholder="Название статьи"
-            />
-            <input
-              onChange={e => setAuthor(e.target.value)}
-              type="text"
-              placeholder="Автор"
-            />
-            <input
-              onChange={e => setCategory(e.target.value)}
-              type="text"
-              placeholder="Категория"
-            />
-            <input
-              onChange={e => setSubcategory(e.target.value)}
-              type="text"
-              placeholder="Подкатегория"
-            />
-            <label className="container">
-              <span>{"Опубликовать "}</span>
-              <input type="checkbox" />
-            </label>
-            <button onClick={() => onSave()}>Сохранить</button>
-          </div>
-        </Popup>
+        <Button className={styles.save_button} onClick={() => setIsOpen(true)}>Создать статью</Button>
       </div>
-      <button onClick={() => setIsOpen(true)}>Сохранить</button>
+
+      <Popup className={styles.popup} title={"Новая статья"} isOpen={isOpen} closePopup={() => setIsOpen(false)}>
+        <div className={styles.inputs}>
+          <Input
+            onChange={val => setTitle(val)}
+            value={title}
+            placeholder="Название статьи"
+          />
+          <Input
+            onChange={val => setAuthor(val)}
+            value={author}
+            placeholder="Автор"
+          />
+          <Input
+            onChange={val => setCategory(val)}
+            value={category}
+            placeholder="Категория"
+          />
+          <Input
+            onChange={val => setSubcategory(val)}
+            value={subcategory}
+            placeholder="Подкатегория"
+          />
+          <label className="container">
+            <span>{"Опубликовать "}</span>
+            <input type="checkbox" />
+          </label>
+          <Button onClick={() => onSave()}>Сохранить</Button>
+        </div>
+      </Popup>
     </div>
   )
 }

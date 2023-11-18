@@ -1,3 +1,5 @@
+"use client"
+
 import { CSSProperties } from 'react';
 import styles from './markdown.module.scss'
 import MDEditor from '@uiw/react-md-editor';
