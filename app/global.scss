@@ -79,6 +79,7 @@ pre {
   height: 100%;
 
   textarea {
+    overflow-y: scroll;
     -webkit-text-fill-color: var(--text-color) !important;
   }
 }
