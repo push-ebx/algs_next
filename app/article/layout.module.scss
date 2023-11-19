@@ -27,10 +27,21 @@
 }
 
 .collapseButton {
+  width: 3rem;
+  height: 3rem;
+  padding: 10px;
+  cursor: pointer;
   display: none;
   position: absolute;
   bottom: 2rem;
   right: 2rem;
+  transition: transform .2s;
+  border: 1px solid var(--primary-color);
+
+  &:hover {
+    transition: transform .2s;
+    transform: scale(1.025);
+  }
 
   @include for-tablet-down() {
     display: block;
@@ -42,6 +53,10 @@
 
   @include for-tablet-down() {
     display: none;
+
+    .isOpen {
+      display: block;
+    }
   }
 }
 

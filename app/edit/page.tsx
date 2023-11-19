@@ -15,6 +15,7 @@ export default function Edit() {
 
   const [value, setValue] = useState<string | undefined>();
   const [title, setTitle] = useState<string | undefined>();
+  const [header_image, setHeaderImage] = useState<string | undefined>();
   const [author, setAuthor] = useState<string | undefined>();
   const [category, setCategory] = useState<string | undefined>();
   const [subcategory, setSubcategory] = useState<string | undefined>();
@@ -29,6 +30,7 @@ export default function Edit() {
       setSubcategory(res?.subcategory);
       setIsDraw(res?.is_draw);
       setValue(res?.content);
+      setHeaderImage(res?.header_image);
     });
   }, [])
 
@@ -38,6 +40,7 @@ export default function Edit() {
     const article: Article = {
       id: +id!,
       title,
+      header_image,
       category,
       subcategory,
       is_draw: isDraw,
@@ -71,6 +74,11 @@ export default function Edit() {
             onChange={val => setTitle(val)}
             value={title}
             placeholder="Название статьи"
+          />
+          <Input
+            onChange={val => setHeaderImage(val)}
+            value={header_image}
+            placeholder="URL шапки"
           />
           <Input
             onChange={val => setAuthor(val)}

@@ -5,7 +5,7 @@ import { db } from '@vercel/postgres';
 import {Article, Tree} from "@/app/lib/types";
 import {TreeType} from "@/app/ui";
 
-export async function fetchAllArticles() {
+export async function fetchTreeArticles() {
   try {
     const client = await db.connect();
 
@@ -73,8 +73,8 @@ export async function createArticle(article: Article) {
   try {
     const client = await db.connect();
     const data = await client.sql`
-      INSERT INTO articles (title, author, category, subcategory, content, is_draw)
-      VALUES (${article.title}, ${article.author}, ${article.category}, ${article.subcategory}, ${article.content}, ${article.is_draw});
+      INSERT INTO articles (title, author, category, subcategory, content, is_draw, header_image)
+      VALUES (${article.title}, ${article.author}, ${article.category}, ${article.subcategory}, ${article.content}, ${article.is_draw}, ${article.header_image});
     `;
   } catch (error) {
     console.error('Database Error:', error);
@@ -101,7 +101,7 @@ export async function updateArticle(article: Article) {
     const client = await db.connect();
     const data = await client.sql`
       UPDATE articles
-      SET title=${article.title}, author=${article.author}, category=${article.category}, subcategory=${article.subcategory}, content=${article.content}, is_draw=${article.is_draw}
+      SET title=${article.title}, author=${article.author}, category=${article.category}, subcategory=${article.subcategory}, content=${article.content}, is_draw=${article.is_draw}, header_image=${article.header_image}
       WHERE id=${article.id};
     `;
   } catch (error) {

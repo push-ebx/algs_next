@@ -51,6 +51,8 @@
   row-gap: 10px;
 
   .save_button {
-    grid-column: 6;
+    grid-column: 1 / 7;
+    justify-self: end;
+    width: auto;
   }
 }

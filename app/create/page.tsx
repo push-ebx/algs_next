@@ -13,6 +13,7 @@ import { useRouter } from 'next/navigation';
 export default function Create() {
   const [value, setValue] = useState<string | undefined>();
   const [title, setTitle] = useState<string | undefined>();
+  const [header_image, setHeaderImage] = useState<string | undefined>();
   const [author, setAuthor] = useState<string | undefined>();
   const [category, setCategory] = useState<string | undefined>();
   const [subcategory, setSubcategory] = useState<string | undefined>();
@@ -26,6 +27,7 @@ export default function Create() {
 
     const article: Article = {
       title,
+      header_image,
       category,
       subcategory,
       is_draw: isDraw,
@@ -59,6 +61,11 @@ export default function Create() {
             onChange={val => setTitle(val)}
             value={title}
             placeholder="Название статьи"
+          />
+          <Input
+            onChange={val => setHeaderImage(val)}
+            value={header_image}
+            placeholder="URL шапки"
           />
           <Input
             onChange={val => setAuthor(val)}

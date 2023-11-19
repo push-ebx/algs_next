@@ -6,6 +6,7 @@ export interface Article {
   subcategory?: string;
   content?: string;
   is_draw?: boolean;
+  header_image?: string;
 }
 
 export interface Tree {

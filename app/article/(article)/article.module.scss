@@ -1,23 +1,20 @@
 @import "../layout.module";
 
-.container {
-  position: relative;
-  height: auto;
-  border-radius: 23px;
+.article {
   background: var(--background-article-color);
-  padding: 50px 30px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  overflow-y: hidden;
+  border-radius: 7px;
+
+  .header_image {
+    position: relative !important;
+    border-radius: 7px 7px 0 0;
+  }
 
   .category_path_author {
     display: flex;
     justify-content: space-between;
-    max-width: 40rem;
     width: 100%;
-    padding: 0 1.5rem;
+    padding: 20px 1.5rem;
+    //margin-top: 20px;
 
     .category_path, .author {
       font-size: .8em;
@@ -25,6 +22,18 @@
       opacity: .5;
     }
   }
+}
+
+.container {
+  position: relative;
+  height: auto;
+  border-radius: 23px;
+  padding: 0 30px 50px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  overflow-y: hidden;
 
   .markdown {
     max-width: 40rem;
