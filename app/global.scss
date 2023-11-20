@@ -1,3 +1,5 @@
+@import "@/app/article/layout.module";
+
 :root {
   --text-color: #333333;
   --background-color: #f5f5f5;
@@ -7,8 +9,8 @@
   --green-color: #7fea27;
   --primary-color: #41a0ff;
   --purple-color: #ba56ff;
-  --text-size: 16px;
-  --header-height: 80px;
+  --text-size: 1rem;
+  --header-height: 5rem;
   --header-box-shadow: 1px 0 2px rgba(0, 0, 0, .234);
 }
 
@@ -19,12 +21,20 @@
   scroll-behavior: smooth;
 }
 
+@function calc-between-width($width-start, $value-start, $width-end, $value-end) {
+  @return calc(#{$value-start} * 1px + (#{$value-end} - #{$value-start}) * (100vw - #{$width-start} * 1px) / (#{$width-end} - #{$width-start}))
+}
+
 html,
 body {
   width: 100vw;
   height: 100vh;
   overflow-x: hidden;
-  font-size: 16px;
+  font-size: 1vw;
+
+  @include for-desktop-down() {
+    font-size: 16px;
+  }
 }
 
 body {

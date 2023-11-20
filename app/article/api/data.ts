@@ -1,6 +1,5 @@
 'use server'
 
-import {sql} from '@vercel/postgres';
 import { db } from '@vercel/postgres';
 import {Article, Tree} from "@/app/lib/types";
 import {TreeType} from "@/app/ui";
