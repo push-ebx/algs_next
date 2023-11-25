@@ -27,8 +27,6 @@
 
 html,
 body {
-  width: 100vw;
-  height: 100vh;
   overflow-x: hidden;
   font-size: 1vw;
 
@@ -40,6 +38,8 @@ body {
 body {
   background: var(--background-color);
   color: var(--text-color);
+  width: 100vw;
+  height: 100vh;
 }
 
 a {
