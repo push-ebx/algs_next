@@ -1,10 +1,10 @@
 import {$api} from "@/app/api/config";
 
 export interface User {
-  id: number;
+  id: number | null;
   username: string;
   token: string;
-  role: "admin" | "moderator" | "user";
+  role: "admin" | "moderator" | "user" | "";
 }
 
 export interface Response {

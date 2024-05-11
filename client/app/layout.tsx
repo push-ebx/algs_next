@@ -1,6 +1,8 @@
 import { Inter } from 'next/font/google'
 import './global.scss'
 import {Header, Katex} from "@/app/ui";
+import StoreProvider from "@/app/StoreProvider";
+import { AntdRegistry } from '@ant-design/nextjs-registry';
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -11,10 +13,14 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={inter.className}>
-        <Header />
-        {children}
-      </body>
+    <StoreProvider>
+      <AntdRegistry>
+        <body className={inter.className}>
+          <Header />
+          {children}
+        </body>
+      </AntdRegistry>
+    </StoreProvider>
     </html>
   )
 }
