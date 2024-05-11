@@ -15,7 +15,7 @@ router.get("/users/assign-role", authMiddleware, UserController.assignRole);
 
 router.post("/article/create", authMiddleware, ArticleController.createArticle);
 router.get("/articles/unapproved", authMiddleware, ArticleController.getUnapprovedArticles);
-router.get("/article/get", authMiddleware, ArticleController.getArticleById);
+router.get("/article/get", ArticleController.getArticleById);
 router.get("/articles/get", authMiddleware, ArticleController.getArticlesByUserId);
 router.delete("/article/delete", authMiddleware, ArticleController.deleteArticle);
 router.put("/article/update", authMiddleware, ArticleController.updateArticle);

@@ -36,9 +36,15 @@ class ArticleService {
   async getArticleById(article_id) {
     try {
       const [[article]] = await mysql.query(`
-        SELECT * FROM articles WHERE article_id = '${article_id}'
+        SELECT * FROM articles WHERE id = '${article_id}'
       `);
-      return article;
+      const file_name = article?.file_name;
+
+      if (file_name) {
+        const filePath = path.join(__dirname, '../public', `${file_name}.md`);
+        const content = await fs.readFile(filePath, 'utf-8');
+        return {...article, content};
+      }
     } catch (e) {
       throw new Error(e.message);
     }
