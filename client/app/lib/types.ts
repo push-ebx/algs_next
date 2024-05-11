@@ -29,3 +29,9 @@ export interface Tree {
   subcategory?: string,
   id: number
 }
+
+export interface ResponseTree {
+  success: boolean;
+  message?: string;
+  data?: Tree;
+}

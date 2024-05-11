@@ -1,8 +1,7 @@
 @import "@/app/article/layout.module";
 
 .header {
-  position: absolute;
-  //z-index: 9999;
+  position: relative;
   width: 100%;
   display: flex;
   justify-content: end;

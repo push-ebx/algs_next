@@ -1,0 +1,26 @@
+@mixin for-desktop-down {
+  @media (max-width: 1400px) { @content; }
+}
+
+@mixin for-tablet-down {
+  @media (max-width: 1070px) { @content; }
+}
+
+.wrapper_tree {
+  @include for-tablet-down() {
+    display: none;
+
+    .isOpen {
+      display: block;
+    }
+  }
+}
+
+.tree {
+  height: calc(100vh - var(--header-height) - 93px);
+  font-size: 16px;
+  background: #fff;
+  overflow: scroll;
+  padding: 1.5rem;
+  border-radius: 10px;
+}

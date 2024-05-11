@@ -1,19 +1,8 @@
 'use server'
 
 import { db } from '@vercel/postgres';
-import {Article, Tree} from "@/app/lib/types";
-import {TreeType} from "@/app/ui";
+import {Article} from "@/app/lib/types";
 
-export async function fetchTreeArticles() {
-  try {
-    const res = await fetch('http://localhost:4000/api/articles/get-tree');
-    const tree = await res.json();
-    return tree.data;
-  } catch (error) {
-    console.error('Database Error:', error);
-    throw new Error('Failed to fetch tree data.');
-  }
-}
 
 export async function fetchArticleByID(id?: number) {
   try {

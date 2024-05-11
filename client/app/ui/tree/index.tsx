@@ -1,4 +1,5 @@
 "use client"
+
 import styles from './tree.module.scss'
 import React, {CSSProperties, useEffect, useRef, useState} from "react";
 import clsx from 'clsx'
@@ -15,7 +16,7 @@ export type TreeType = {
 }
 
 type Props = {
-  tree: TreeType,
+  tree?: TreeType,
   className?: string
 }
 
@@ -63,7 +64,7 @@ const Item = React.memo<
 const Tree = ({tree, className}: Props) => { // add active category and sub and article
   return (
     <div className={clsx(styles.tree, className)}>
-      {tree.child?.length && tree.child.map((category: TreeType, i) => (
+      {tree?.child?.length && tree?.child.map((category: TreeType, i) => (
         <Item defaultOpen name={category.title} key={i}>
           {category.child?.length && category.child.map((subcategory: TreeType, j) => (
             <Item defaultOpen name={subcategory.title} key={`${i}.${j}`}>

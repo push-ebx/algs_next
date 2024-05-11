@@ -35,9 +35,7 @@ class ArticleService {
 
   async getArticleById(article_id) {
     try {
-      const [[article]] = await mysql.query(`
-        SELECT * FROM articles WHERE id = '${article_id}'
-      `);
+      const [[article]] = await mysql.query(`SELECT * FROM articles WHERE id = '${article_id}'`);
       const file_name = article?.file_name;
 
       if (file_name) {

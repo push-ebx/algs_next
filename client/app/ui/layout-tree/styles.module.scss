@@ -49,19 +49,5 @@
   }
 }
 
-.wrapper_tree {
-  height: auto;
 
-  @include for-tablet-down() {
-    display: none;
-
-    .isOpen {
-      display: block;
-    }
-  }
-}
-
-.tree {
-  max-height: calc(100vh - 110px - 49px);
-}
 
