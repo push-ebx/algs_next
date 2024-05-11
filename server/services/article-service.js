@@ -69,12 +69,16 @@ class ArticleService {
     }
   }
 
-  async updateArticle(article_id, title, category, subcategory, is_draft) {
+  async updateArticle(article_id, title, category, subcategory, is_draft, content) {
     try {
+      const article = await this.getArticleById(article_id);
+      const filePath = path.join(__dirname, '../public', `${article.file_name}.md`);
+      await fs.writeFile(filePath, content);
+
       await mysql.query(`
         UPDATE articles 
         SET title = '${title}', category = '${category}', subcategory = '${subcategory}', is_draft = ${is_draft ? 1 : 0}, is_approved = 0
-        WHERE article_id = '${article_id}'
+        WHERE id = '${article_id}'
       `);
     } catch (e) {
       throw new Error(e.message);

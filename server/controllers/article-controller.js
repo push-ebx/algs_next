@@ -56,8 +56,8 @@ class ArticleController {
   async updateArticle(req, res, next) {
     try {
       const { article_id } = req.query;
-      const { title, category, subcategory, is_draft } = req.body;
-      await articleService.updateArticle(article_id, title, category, subcategory, is_draft);
+      const { title, category, subcategory, is_draft, content } = req.body;
+      await articleService.updateArticle(article_id, title, category, subcategory, is_draft, content);
       return res.send({ status: 'ok', success: true, message: 'Статья успешно обновлена!' });
     } catch (e) {
       next(e);
@@ -90,7 +90,7 @@ class ArticleController {
     }
   }
 
-  async getTree(req, res, next) {
+  async getTree(req, res) {
     const tree = await articleService.getTree();
     return res.send({ status: 'ok', success: true, data: tree });
   }

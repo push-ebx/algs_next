@@ -8,6 +8,21 @@ export const getArticleById = async ({article_id}: {article_id: number}): Promis
   return res.data;
 };
 
+export const updateArticle = async ({id, title, category, subcategory, content, is_draft}:
+                                      {
+                                        id: number,
+                                        title: string,
+                                        category: string,
+                                        subcategory: string,
+                                        content: string,
+                                        is_draft: boolean
+                                      }): Promise<ResponseArticle> => {
+  const res = await $api.put<ResponseArticle>(`/article/update?article_id=${id}`,
+    {title, category, subcategory, content, is_draft}
+  );
+  return res.data;
+};
+
 export const getTree = async (): Promise<ResponseTree> => {
   const res = await $api.get<ResponseTree>(`/articles/get-tree`);
   return res.data;

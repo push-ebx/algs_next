@@ -33,6 +33,7 @@ export default function Create() {
       content
     };
 
+    // @ts-ignore
     await createArticle(article);
     setIsOpen(false);
     router.push(`/profile`, { scroll: false });

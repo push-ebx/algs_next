@@ -3,10 +3,10 @@
 import React, {useEffect, useState} from "react";
 import styles from './edit.module.scss';
 import {CustomMarkdown, Input, CustomMDEditor, Popup, Button} from "@/app/ui";
-import {fetchArticleByID, updateArticle} from "@/app/article/api/data";
 import {useRouter, useSearchParams} from 'next/navigation';
 import {Article} from "@/app/lib/types";
 import clsx from "clsx";
+import {getArticleById, updateArticle} from "@/app/article/api";
 
 export default function Edit() {
   const searchParams = useSearchParams();
@@ -19,35 +19,35 @@ export default function Edit() {
   const [author, setAuthor] = useState<string | undefined>();
   const [category, setCategory] = useState<string | undefined>();
   const [subcategory, setSubcategory] = useState<string | undefined>();
-  const [isDraw, setIsDraw] = useState<boolean | undefined>(false);
+  const [is_draft, setIsDraft] = useState<boolean | undefined>(false);
   const [isOpen, setIsOpen] = useState<boolean>(false);
 
   useEffect(() => {
-    fetchArticleByID(+id!).then(res => {
-      setTitle(res?.title);
-      setAuthor(res?.author);
-      setCategory(res?.category);
-      setSubcategory(res?.subcategory);
-      setIsDraw(res?.is_draw);
-      setValue(res?.content);
-      setHeaderImage(res?.header_image);
-    });
+    if (id) {
+      getArticleById({article_id: +id!}).then(res => {
+        setTitle(res.data?.title);
+        setCategory(res.data?.category);
+        setSubcategory(res.data?.subcategory);
+        setIsDraft(res.data?.is_draft);
+        setValue(res.data?.content);
+      })
+    }
   }, [])
 
   const onSave = async () => {
-    if (!title || !value || !author || !category || !subcategory) return;
+    console.log(title)
+    if (!title || !value || !category || !subcategory) return;
 
     const article: Article = {
       id: +id!,
       title,
-      header_image,
       category,
       subcategory,
-      is_draw: isDraw,
-      author,
+      is_draft: is_draft,
       content: value
     };
 
+    // @ts-ignore
     await updateArticle(article);
     setIsOpen(false);
 
@@ -99,7 +99,7 @@ export default function Edit() {
             <span>{"Опубликовать "}</span>
             <input type="checkbox" />
           </label>
-          <Button onClick={() => onSave()}>Сохранить</Button>
+          <Button onClick={onSave}>Сохранить</Button>
         </div>
       </Popup>
     </div>

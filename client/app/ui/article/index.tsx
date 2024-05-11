@@ -15,9 +15,8 @@ export const ArticleComponent = ({article_id}: {article_id: number}) => {
   }
 
   useEffect(() => {
-    console.log(article_id)
     fetchArticle();
-  }, []);
+  }, [article_id]);
 
   return (
     <div className={styles.article}>
