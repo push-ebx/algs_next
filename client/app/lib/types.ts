@@ -1,12 +1,13 @@
 export interface Article {
-  id?: number,
-  title?: string;
-  author?: string;
-  category?: string;
-  subcategory?: string;
-  content?: string;
-  is_draw?: boolean;
-  header_image?: string;
+  id: number | null;
+  title: string;
+  file_name: string;
+  category: string;
+  subcategory: string;
+  is_approved: boolean;
+  author_id: number;
+  created_at: string;
+  is_draft: boolean;
 }
 
 export interface Tree {

@@ -1,6 +1,28 @@
 const userService = require('../services/user-service');
 
 class UserController {
+  async getUser(req, res, next) {
+    try {
+      const [[user]] = await mysql.query(`SELECT * from users WHERE id='${req.user_id}'`);
+
+      if (user) {
+        return res.send({
+          status: 'ok',
+          success: true,
+          data: user
+        });
+      } else {
+        return res.send({
+          status: 'ok',
+          success: false,
+          message: 'Пользователь не найден'
+        });
+      }
+    } catch (e) {
+      next(e);
+    }
+  }
+
   async getUsers(req, res, next) {
     try {
       const { per_page=10, page=1 } = req.query;

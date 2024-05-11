@@ -14,12 +14,8 @@
 
   .logo {
     position: absolute;
-    inset: 0;
-    margin: auto;
-    //width: 10rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    left: 50%;
+    transform: translate(-50%, 0);
 
     span {
       font-size: 2rem;

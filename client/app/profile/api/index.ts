@@ -1,20 +1,15 @@
-'use server'
+'use client'
 
-import { db } from '@vercel/postgres';
+import {$api} from "@/app/api/config";
 import {Article} from "@/app/lib/types";
 
-export async function fetchListArticles() {
-  try {
-    const client = await db.connect();
-
-    const data = await client.sql<Article>`
-      SELECT title, id, is_draw FROM articles
-      ORDER BY id;
-    `;
-
-    return data.rows;
-  } catch (error) {
-    console.error('Database Error:', error);
-    throw new Error('Failed to fetch list articles.');
-  }
+export interface ResponseArticles {
+  success: boolean;
+  message?: string;
+  data?: Article[];
 }
+
+export const getArticles = async (): Promise<Article[] | undefined> => {
+  const res = await $api.get<ResponseArticles>(`/articles/get`);
+  return res.data.data;
+};

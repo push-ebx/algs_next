@@ -1,6 +1,6 @@
 import { Inter } from 'next/font/google'
 import './global.scss'
-import {Header, Katex} from "@/app/ui";
+import { Header } from "@/app/ui";
 import StoreProvider from "@/app/StoreProvider";
 import { AntdRegistry } from '@ant-design/nextjs-registry';
 

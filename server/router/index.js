@@ -9,6 +9,7 @@ const router = express.Router();
 router.post("/auth/login", AuthController.login);
 router.post("/auth/registration", AuthController.registration);
 
+router.get("/user/get", authMiddleware, UserController.getUser)
 router.get("/users/get", authMiddleware, UserController.getUsers);
 router.get("/users/assign-role", authMiddleware, UserController.assignRole);
 

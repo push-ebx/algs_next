@@ -4,7 +4,7 @@ import type { RootState } from '@/app/lib/store'
 import { User } from "@/app/auth/api";
 
 const initialState: User = {
-  username: "123",
+  username: "",
   id: null,
   token: "",
   role: ""
