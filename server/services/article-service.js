@@ -1,6 +1,7 @@
 const fs = require('fs').promises;
 const {v4: uuidv4} = require('uuid');
 const path = require('path');
+const userService = require('../services/user-service');
 
 class ArticleService {
   async createArticle(title, content, category, subcategory, is_draft, author_id) {
@@ -33,15 +34,36 @@ class ArticleService {
     }
   }
 
-  async getArticleById(article_id) {
+  async getRandomArticle() {
     try {
-      const [[article]] = await mysql.query(`SELECT * FROM articles WHERE id = '${article_id}'`);
+      const [[article]] = await mysql.query(`
+        SELECT * FROM articles ORDER BY RAND() LIMIT 1;
+      `);
       const file_name = article?.file_name;
+      const author = await userService.getUser(article.author_id);
+      delete author.hash_password;
 
       if (file_name) {
         const filePath = path.join(__dirname, '../public', `${file_name}.md`);
         const content = await fs.readFile(filePath, 'utf-8');
-        return {...article, content};
+        return {...article, content, author};
+      }
+    } catch (e) {
+      throw new Error(e.message);
+    }
+  }
+
+  async getArticleById(article_id) {
+    try {
+      const [[article]] = await mysql.query(`SELECT * FROM articles WHERE id = '${article_id}'`);
+      const file_name = article?.file_name;
+      const author = await userService.getUser(article.author_id);
+      delete author.hash_password;
+
+      if (file_name) {
+        const filePath = path.join(__dirname, '../public', `${file_name}.md`);
+        const content = await fs.readFile(filePath, 'utf-8');
+        return {...article, content, author};
       }
     } catch (e) {
       throw new Error(e.message);
@@ -62,7 +84,7 @@ class ArticleService {
   async deleteArticle(article_id) {
     try {
       await mysql.query(`
-        DELETE FROM articles WHERE article_id = '${article_id}'
+        DELETE FROM articles WHERE id = '${article_id}'
       `);
     } catch (e) {
       throw new Error(e.message);

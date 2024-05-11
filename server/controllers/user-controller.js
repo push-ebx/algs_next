@@ -3,7 +3,7 @@ const userService = require('../services/user-service');
 class UserController {
   async getUser(req, res, next) {
     try {
-      const [[user]] = await mysql.query(`SELECT * from users WHERE id='${req.user_id}'`);
+      const user = await userService.getUser(req.user_id);
 
       if (user) {
         return res.send({

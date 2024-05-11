@@ -2,16 +2,23 @@
 
 import React, {useEffect, useState} from 'react';
 import styles from "./article.module.scss";
-import {getArticleById} from "@/app/article/api";
+import {getArticleById, getRandomArticle} from "@/app/article/api";
 import {Article} from "@/app/lib/types";
 import {CustomMarkdown} from "@/app/ui";
 
-export const ArticleComponent = ({article_id}: {article_id: number}) => {
+export const ArticleComponent = ({isRandom, article_id}: {isRandom?: boolean, article_id?: number}) => {
   const [article, setArticle] = useState<Article>();
 
   const fetchArticle = async () => {
-    const res = await getArticleById({article_id});
-    setArticle(res.data);
+    if (isRandom) {
+      const res = await getRandomArticle();
+      setArticle(res.data);
+      return
+    }
+    if (article_id) {
+      const res = await getArticleById({article_id});
+      setArticle(res.data);
+    }
   }
 
   useEffect(() => {
@@ -31,7 +38,7 @@ export const ArticleComponent = ({article_id}: {article_id: number}) => {
       {article &&
         <div className={styles.category_path_author}>
           <span className={styles.category_path}>{article.category} / {article.subcategory}</span>
-          <span className={styles.author}>{article.author_id}</span>
+          <span className={styles.author}>Автор: {article.author?.username}</span>
         </div>
       }
       <div className={styles.container}>

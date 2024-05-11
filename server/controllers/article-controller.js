@@ -20,6 +20,15 @@ class ArticleController {
     }
   }
 
+  async getRandomArticle(req, res, next) {
+    try {
+      const article = await articleService.getRandomArticle();
+      return res.send({ status: 'ok', success: true, data: article });
+    } catch (e) {
+      next(e);
+    }
+  }
+
   async getArticleById(req, res, next) {
     try {
       const { article_id } = req.query;
