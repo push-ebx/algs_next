@@ -110,13 +110,20 @@ img {
   height: auto;
   vertical-align: middle;
   border-radius: 7px;
-
-  //margin: -10px -1.5rem 0 0;
 }
-//
-//.language-python {
-//  background: red;
-//  overflow-x: scroll;
-//  max-width: 100% !important;
-//  width: auto !important;
-//}
+
+.ant-modal-title {
+  font-size: 20px !important;
+}
+
+.ant-modal-header {
+  margin-bottom: 20px !important;
+}
+
+.ant-modal-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  max-height: 80vh;
+  overflow-y: auto;
+}

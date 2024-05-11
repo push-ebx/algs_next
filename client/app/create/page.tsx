@@ -2,42 +2,56 @@
 
 import React, {useState} from "react";
 import styles from './create.module.scss';
-import {Button, CustomMarkdown, Input} from "@/app/ui";
+import {CustomMarkdown} from "@/app/ui";
 import {CustomMDEditor} from "@/app/ui/markdownEditor";
-import {Popup} from "@/app/ui/popup";
 import {createArticle} from "./api";
-import {Article} from "@/app/lib/types";
 import clsx from "clsx";
 import { useRouter } from 'next/navigation';
+import {Button, Checkbox, Form, Input, message, Modal} from "antd";
 
 export default function Create() {
   const [content, setContent] = useState<string | undefined>('');
-  const [title, setTitle] = useState<string>('');
-  const [header_image, setHeaderImage] = useState<string | undefined>();
-  const [author, setAuthor] = useState<string | undefined>();
-  const [category, setCategory] = useState<string | undefined>();
-  const [subcategory, setSubcategory] = useState<string | undefined>();
-  const [is_draft, setIsDraft] = useState<boolean>(false);
-  const [isOpen, setIsOpen] = useState<boolean>(false);
+  const [open, setOpen] = useState(false);
+  const [form] = Form.useForm();
+  const [confirmLoading, setConfirmLoading] = useState(false);
 
   const router = useRouter();
 
-  const onSave = async () => {
-    if (!title || !content || !category || !subcategory) return;
+  const handleCreate = async () => {
+    try {
+      setConfirmLoading(true);
+      const values = await form.validateFields();
 
-    const article: Article = {
-      title,
-      category,
-      subcategory,
-      is_draft,
-      content
-    };
+      if (!content) {
+        message.error('Необходимо содержимое статьи!');
+        return;
+      }
+      console.log(values)
 
-    // @ts-ignore
-    await createArticle(article);
-    setIsOpen(false);
-    router.push(`/profile`, { scroll: false });
-  }
+      const res = await createArticle({
+        title: values.title,
+        category: values.category,
+        subcategory: values.subcategory,
+        is_draft: values.is_draft,
+        content
+      });
+
+      setTimeout(() => {
+        if (res.success) {
+          message.success('Статья успешно создана и отправлена на проверку модерации!');
+        } else {
+          message.error('Произошла ошибка при создании статьи!');
+        }
+        setOpen(false);
+        form.resetFields();
+        setConfirmLoading(false);
+        router.push(`/profile`, { scroll: false });
+      }, 500);
+    } catch (err) {
+      console.error('Validation failed:', err);
+      setConfirmLoading(false);
+    }
+  };
 
   return (
     <div className={styles.editor}>
@@ -50,43 +64,58 @@ export default function Create() {
         <CustomMarkdown className={styles['md-viewer']}>
           {content}
         </CustomMarkdown>
-        <Button className={styles.save_button} onClick={() => setIsOpen(true)}>Создать статью</Button>
+
+        <Button size={"large"} className={styles.save_button} type={"primary"} onClick={() => setOpen(true)}>
+          Создать статью
+        </Button>
       </div>
 
-      <Popup className={styles.popup} title={"Новая статья"} isOpen={isOpen} closePopup={() => setIsOpen(false)}>
-        <div className={styles.inputs}>
-          <Input
-            onChange={val => setTitle(val)}
-            value={title}
-            placeholder="Название статьи"
-          />
-          <Input
-            onChange={val => setHeaderImage(val)}
-            value={header_image}
-            placeholder="URL шапки"
-          />
-          <Input
-            onChange={val => setAuthor(val)}
-            value={author}
-            placeholder="Автор"
-          />
-          <Input
-            onChange={val => setCategory(val)}
-            value={category}
-            placeholder="Категория"
-          />
-          <Input
-            onChange={val => setSubcategory(val)}
-            value={subcategory}
-            placeholder="Подкатегория"
-          />
-          <label className="container">
-            <span>{"Опубликовать "}</span>
-            <input type="checkbox" />
-          </label>
-          <Button onClick={() => onSave()}>Сохранить</Button>
-        </div>
-      </Popup>
+      <Modal
+        title="Создание статьи"
+        open={open}
+        onOk={handleCreate}
+        onCancel={() => setOpen(false)}
+        centered
+        confirmLoading={confirmLoading}
+        footer={[
+          <Button key="back" onClick={() => setOpen(false)}>
+            Отмена
+          </Button>,
+          <Button key="submit" type="primary" loading={confirmLoading} onClick={handleCreate}>
+            Создать
+          </Button>,
+        ]}
+      >
+        <Form form={form} layout="vertical">
+          <Form.Item
+            name="title"
+            label="Название статьи:"
+            rules={[{required: true, message: 'Пожалуйста, введите название статьи'}]}
+          >
+            <Input/>
+          </Form.Item>
+          <Form.Item
+            name="category"
+            label="Категория:"
+            rules={[{required: true, message: 'Пожалуйста, введите категорию статьи'}]}
+          >
+            <Input/>
+          </Form.Item>
+          <Form.Item
+            name="subcategory"
+            label="Подкатегория:"
+            rules={[{required: true, message: 'Пожалуйста, введите подкатегорию статьи'}]}
+          >
+            <Input/>
+          </Form.Item>
+          <Form.Item
+            name="is_draft"
+            valuePropName="checked"
+          >
+            <Checkbox>Черновик</Checkbox>
+          </Form.Item>
+        </Form>
+      </Modal>
     </div>
   )
 }

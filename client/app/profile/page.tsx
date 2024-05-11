@@ -70,17 +70,17 @@ export default function Dashboard() {
       key: 'is_approved',
       align: 'center',
       render: (is_approved) => is_approved ?
-        <Tooltip title={"Статья одобрена модератором и опубликована"}><CheckOutlined style={{color: 'green'}} /> </Tooltip> :
-        <Tooltip title={"Статья находится на проверке модерации"}><CloseOutlined style={{color: 'red'}} /> </Tooltip>,
+        <Tooltip title={"Статья одобрена модератором и опубликована"}><CheckOutlined style={{color: 'green'}} /></Tooltip> :
+        <Tooltip title={"Статья находится на проверке модерации"}><CloseOutlined style={{color: 'red'}} /></Tooltip>,
     },
     {
-      title: 'В работе',
+      title: 'Готовность',
       dataIndex: 'is_draft',
       key: 'is_draft',
       align: 'center',
-      render: (is_draft) => !is_draft ?
-        <Tooltip title={"Статья готова"}> <CheckOutlined style={{color: 'green'}} /> </Tooltip> :
-        <Tooltip title={"Статья находится на стадии написания"}><CloseOutlined style={{color: 'red'}} /> </Tooltip>
+      render: (is_draft) => is_draft ?
+        <Tooltip title={"Статья находится на стадии написания"}><CloseOutlined style={{color: 'red'}} /></Tooltip> :
+        <Tooltip title={"Статья готова"}> <CheckOutlined style={{color: 'green'}} /></Tooltip>
     },
     {
       title: 'Редактировать',

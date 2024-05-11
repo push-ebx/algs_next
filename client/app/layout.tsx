@@ -18,7 +18,14 @@ export default function RootLayout({ children }: {
           token: {
             colorPrimary: '#41a0ff',
             colorText: '#343434',
-          }
+            borderRadius: 5,
+            colorBgContainer: '#fff',
+          },
+          components: {
+            Form: {
+              itemMarginBottom: 10
+            }
+          },
         }}
       >
         <AntdRegistry>

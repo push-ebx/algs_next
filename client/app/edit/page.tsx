@@ -2,11 +2,13 @@
 
 import React, {useEffect, useState} from "react";
 import styles from './edit.module.scss';
-import {CustomMarkdown, Input, CustomMDEditor, Popup, Button} from "@/app/ui";
+import {CustomMarkdown, CustomMDEditor} from "@/app/ui";
 import {useRouter, useSearchParams} from 'next/navigation';
 import {Article} from "@/app/lib/types";
 import clsx from "clsx";
 import {getArticleById, updateArticle} from "@/app/article/api";
+import {Button, Checkbox, Form, Input, message, Modal} from "antd";
+import {createArticle} from "@/app/create/api";
 
 export default function Edit() {
   const searchParams = useSearchParams();
@@ -21,38 +23,61 @@ export default function Edit() {
   const [subcategory, setSubcategory] = useState<string | undefined>();
   const [is_draft, setIsDraft] = useState<boolean | undefined>(false);
   const [isOpen, setIsOpen] = useState<boolean>(false);
+  const [article, setArticle] = useState<Article>();
+
+  const [open, setOpen] = useState(false);
+  const [form] = Form.useForm();
+  const [confirmLoading, setConfirmLoading] = useState(false);
 
   useEffect(() => {
-    if (id) {
-      getArticleById({article_id: +id!}).then(res => {
-        setTitle(res.data?.title);
-        setCategory(res.data?.category);
-        setSubcategory(res.data?.subcategory);
-        setIsDraft(res.data?.is_draft);
-        setValue(res.data?.content);
-      })
-    }
+    id && getArticleById({article_id: +id!}).then(res => {
+      setArticle(res.data);
+      setValue(res.data?.content);
+    })
   }, [])
 
-  const onSave = async () => {
-    console.log(title)
-    if (!title || !value || !category || !subcategory) return;
+  const handleCreate = async () => {
+    try {
+      setConfirmLoading(true);
+      const values = await form.validateFields();
 
-    const article: Article = {
-      id: +id!,
-      title,
-      category,
-      subcategory,
-      is_draft: is_draft,
-      content: value
-    };
+      if (!article?.id) {
+        message.error('Статья не найдена!');
+        return;
+      }
 
-    // @ts-ignore
-    await updateArticle(article);
-    setIsOpen(false);
+      if (!value) {
+        message.error('Необходимо содержимое статьи!');
+        return;
+      }
 
-    router.push(`/article?id=${article.id}`, { scroll: false });
-  }
+      const res = await updateArticle({
+        id: article?.id,
+        title: values.title,
+        category: values.category,
+        subcategory: values.subcategory,
+        is_draft: values.is_draft,
+        content: value
+      });
+
+      setTimeout(() => {
+        if (res.success) {
+          message.success('Статья успешно отредактирована и отправлена на проверку модерации!');
+        } else {
+          message.error('Произошла ошибка при редактировании статьи!');
+        }
+
+        setOpen(false);
+        form.resetFields();
+        setConfirmLoading(false);
+        router.push(`/profile`, { scroll: false });
+      }, 500);
+    } catch (err) {
+      console.error('Validation failed:', err);
+      setConfirmLoading(false);
+    }
+  };
+
 
   return (
     <div className={styles.editor}>
@@ -65,43 +90,57 @@ export default function Edit() {
         <CustomMarkdown className={styles['md-viewer']}>
           {value}
         </CustomMarkdown>
-        <Button className={styles.save_button} onClick={() => setIsOpen(true)}>Сохранить изменения</Button>
+        <Button size={"large"} className={styles.save_button} type={"primary"} onClick={() => setOpen(true)}>
+          Сохранить изменения
+        </Button>
       </div>
 
-      <Popup className={styles.popup} title={"Новая статья"} isOpen={isOpen} closePopup={() => setIsOpen(false)}>
-        <div className={styles.inputs}>
-          <Input
-            onChange={val => setTitle(val)}
-            value={title}
-            placeholder="Название статьи"
-          />
-          <Input
-            onChange={val => setHeaderImage(val)}
-            value={header_image}
-            placeholder="URL шапки"
-          />
-          <Input
-            onChange={val => setAuthor(val)}
-            value={author}
-            placeholder="Автор"
-          />
-          <Input
-            onChange={val => setCategory(val)}
-            value={category}
-            placeholder="Категория"
-          />
-          <Input
-            onChange={val => setSubcategory(val)}
-            value={subcategory}
-            placeholder="Подкатегория"
-          />
-          <label className="container">
-            <span>{"Опубликовать "}</span>
-            <input type="checkbox" />
-          </label>
-          <Button onClick={onSave}>Сохранить</Button>
-        </div>
-      </Popup>
+      <Modal
+        title="Редактировние статьи"
+        open={open}
+        onOk={handleCreate}
+        onCancel={() => setOpen(false)}
+        centered
+        confirmLoading={confirmLoading}
+        footer={[
+          <Button key="back" onClick={() => setOpen(false)}>
+            Отмена
+          </Button>,
+          <Button key="submit" type="primary" loading={confirmLoading} onClick={handleCreate}>
+            Сохранить
+          </Button>,
+        ]}
+      >
+        <Form form={form} layout="vertical">
+          <Form.Item
+            name="title"
+            label="Название статьи:"
+            rules={[{required: true, message: 'Пожалуйста, введите название статьи'}]}
+          >
+            <Input defaultValue={article?.title}/>
+          </Form.Item>
+          <Form.Item
+            name="category"
+            label="Категория:"
+            rules={[{required: true, message: 'Пожалуйста, введите категорию статьи'}]}
+          >
+            <Input defaultValue={article?.category}/>
+          </Form.Item>
+          <Form.Item
+            name="subcategory"
+            label="Подкатегория:"
+            rules={[{required: true, message: 'Пожалуйста, введите подкатегорию статьи'}]}
+          >
+            <Input defaultValue={article?.subcategory}/>
+          </Form.Item>
+          <Form.Item
+            name="is_draft"
+            valuePropName="checked"
+          >
+            <Checkbox defaultChecked={article?.is_draft}>Черновик</Checkbox>
+          </Form.Item>
+        </Form>
+      </Modal>
     </div>
   )
 }
