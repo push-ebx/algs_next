@@ -5,52 +5,49 @@ import styles from './create.module.scss';
 import {Button, CustomMarkdown, Input} from "@/app/ui";
 import {CustomMDEditor} from "@/app/ui/markdownEditor";
 import {Popup} from "@/app/ui/popup";
-import {createArticle, getLastArticleID} from "@/app/article/api/data";
+import {createArticle} from "./api";
 import {Article} from "@/app/lib/types";
 import clsx from "clsx";
 import { useRouter } from 'next/navigation';
 
 export default function Create() {
-  const [value, setValue] = useState<string | undefined>();
-  const [title, setTitle] = useState<string | undefined>();
+  const [content, setContent] = useState<string | undefined>('');
+  const [title, setTitle] = useState<string>('');
   const [header_image, setHeaderImage] = useState<string | undefined>();
   const [author, setAuthor] = useState<string | undefined>();
   const [category, setCategory] = useState<string | undefined>();
   const [subcategory, setSubcategory] = useState<string | undefined>();
-  const [isDraw, setIsDraw] = useState<boolean>(false);
+  const [is_draft, setIsDraft] = useState<boolean>(false);
   const [isOpen, setIsOpen] = useState<boolean>(false);
 
   const router = useRouter();
 
   const onSave = async () => {
-    if (!title || !value || !author || !category || !subcategory) return;
+    if (!title || !content || !category || !subcategory) return;
 
     const article: Article = {
       title,
-      header_image,
       category,
       subcategory,
-      is_draw: isDraw,
-      author,
-      content: value
+      is_draft,
+      content
     };
 
     await createArticle(article);
     setIsOpen(false);
-    const article_id = await getLastArticleID();
-    router.push(`/article?id=${article_id}`, { scroll: false });
+    router.push(`/profile`, { scroll: false });
   }
 
   return (
     <div className={styles.editor}>
       <div className={styles.editor__main}>
         <CustomMDEditor
-          value={value}
-          setValue={setValue}
+          value={content}
+          setValue={setContent}
           className={clsx(styles['md-editor'], styles.customMDEditor)}
         />
         <CustomMarkdown className={styles['md-viewer']}>
-          {value}
+          {content}
         </CustomMarkdown>
         <Button className={styles.save_button} onClick={() => setIsOpen(true)}>Создать статью</Button>
       </div>

@@ -33,11 +33,7 @@ export async function fetchArticleByID(id?: number) {
 
 export async function createArticle(article: Article) {
   try {
-    const client = await db.connect();
-    const data = await client.sql`
-      INSERT INTO articles (title, author, category, subcategory, content, is_draw, header_image)
-      VALUES (${article.title}, ${article.author}, ${article.category}, ${article.subcategory}, ${article.content}, ${article.is_draw}, ${article.header_image});
-    `;
+
   } catch (error) {
     console.error('Database Error:', error);
     throw new Error('Failed to create article.');

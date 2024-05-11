@@ -1,6 +1,4 @@
 import styles from './header.module.scss'
-import user from '@/public/icons/user.svg'
-import Image from 'next/image';
 import Link from "next/link";
 import {User} from "@/app/ui/user";
 

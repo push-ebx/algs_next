@@ -1,6 +1,6 @@
 "use client"
 
-import {useEffect, useState} from 'react';
+import {useState} from 'react';
 import {Button, Form, Input, message, Tabs, Upload, UploadFile} from 'antd';
 import styles from "./auth.module.scss";
 import {login, registration, User} from "./api";
@@ -29,7 +29,6 @@ const beforeUpload = (file: any) => {
 const {TabPane} = Tabs;
 
 export default function Auth() {
-  const savedUser = useSelector((state: { user: User }) => state.user);
   const dispatch = useDispatch()
 
   const [username, setUsername] = useState('');
@@ -38,9 +37,6 @@ export default function Auth() {
 
   const router = useRouter()
 
-  useEffect(() => {
-    console.log(savedUser)
-  }, [savedUser]);
 
   const {user, isFetching: isFetchingUser} = useAuth();
 
@@ -95,10 +91,6 @@ export default function Auth() {
         isFetchingUser || user?.id ?
           <Loader/> :
           <main className={clsx(styles.main_container)}>
-            <Button onClick={() => {
-              dispatch(setUser({id: 3, username: "nikita", token: "adsdf", role: "admin"}))
-            }}></Button>
-            {/*<Loader/>*/}
             <div className={styles.container}>
               <div className={styles.formWrapper}>
                 <Tabs defaultActiveKey="1">

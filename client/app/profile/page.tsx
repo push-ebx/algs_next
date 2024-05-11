@@ -9,16 +9,23 @@ import {useAuth} from "@/app/lib/hooks/useAuth";
 import {Loader} from "@/app/ui/loader";
 import {useRouter} from "next/navigation";
 import {columns} from "@/app/ui/article-row";
-import {FloatButton, Table, Typography, Tooltip, Flex, Empty} from "antd";
+import {FloatButton, Table, Typography, Tooltip, Flex, Empty, Divider} from "antd";
 import {PlusOutlined} from "@ant-design/icons";
 
 export default function Dashboard() {
   const [articles, setArticles] = useState<Article[]>();
   const {user, isFetching: isFetchingUser} = useAuth();
   const router = useRouter();
+  const [isDelay, setIsDelay] = useState(true);
 
   useEffect(() => {
-    getArticles().then(setArticles);
+    getArticles().then(data => {
+      setArticles(data);
+
+      // setTimeout(() => {
+      //   setIsDelay(false);
+      // }, 500);
+    });
   }, []);
 
   useEffect(() => {
@@ -36,8 +43,14 @@ export default function Dashboard() {
             {
               articles?.length ?
                 <Flex vertical>
-                  <Typography.Title level={2}>Список написанных статей</Typography.Title>
-                  <Table columns={columns} dataSource={articles} scroll={{ x: 100 }} />
+                  <Typography.Title style={{marginBottom: 0}} level={2}>Список написанных статей</Typography.Title>
+                  <Divider/>
+                  <Table
+                    columns={columns}
+                    dataSource={articles}
+                    scroll={{ x: 100 }}
+                    pagination={{ defaultPageSize: 10 }}
+                  />
                 </Flex> :
                   <Empty className={styles.empty} description={"Вы еще не написал ни одной статьи!"} />
             }
@@ -45,7 +58,7 @@ export default function Dashboard() {
       }
       <Link href={'/create'}>
         <Tooltip title={"Создать статью"}>
-          <FloatButton icon={<PlusOutlined />} type="default" style={{ right: 50, bottom: 50 }} />
+          <FloatButton  icon={<PlusOutlined />} type="primary" style={{ right: 50, bottom: 50 }} />
         </Tooltip>
       </Link>
     </div>

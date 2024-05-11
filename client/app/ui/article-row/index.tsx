@@ -1,6 +1,6 @@
 import {Article} from "@/app/lib/types";
 import {TableProps, Tooltip, Typography} from "antd";
-import {CheckOutlined, CloseOutlined, EditOutlined} from "@ant-design/icons";
+import {CheckOutlined, CloseOutlined, DeleteOutlined, EditOutlined} from "@ant-design/icons";
 import Link from "next/link";
 
 export const columns: TableProps<Article>['columns'] = [
@@ -39,7 +39,7 @@ export const columns: TableProps<Article>['columns'] = [
     dataIndex: 'is_draft',
     key: 'is_draft',
     align: 'center',
-    render: (is_draft) => is_draft ?
+    render: (is_draft) => !is_draft ?
       <Tooltip title={"Статья готова"}> <CheckOutlined style={{color: 'green'}} /> </Tooltip> :
       <Tooltip title={"Статья находится на стадии написания"}><CloseOutlined style={{color: 'red'}} /> </Tooltip>
   },
@@ -53,6 +53,16 @@ export const columns: TableProps<Article>['columns'] = [
           <EditOutlined style={{color: "#41a0ff"}}/>
         </Tooltip>
       </Link>
+    ),
+  },
+  {
+    title: 'Удалить',
+    key: 'edit',
+    align: 'center',
+    render: (_, record) => (
+      <Tooltip title={"Удалить статью"}>
+        <DeleteOutlined style={{color: "red"}}/>
+      </Tooltip>
     ),
   },
 ]

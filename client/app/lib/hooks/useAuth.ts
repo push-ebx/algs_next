@@ -10,11 +10,6 @@ export const useAuth = () => {
   const pathname = usePathname()
 
   const checkUser = async () => {
-    if (savedUser.username || user) {
-      setUser(savedUser);
-      return;
-    }
-
     const res = await getUser();
     setUser(res.data);
     setIsFetching(false);

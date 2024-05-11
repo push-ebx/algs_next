@@ -1,10 +1,20 @@
+const fs = require('fs').promises;
+const {v4: uuidv4} = require('uuid');
+const path = require('path');
+
 class ArticleService {
-  async createArticle(title, file_name, category, subcategory, is_draft, author_id) {
+  async createArticle(title, content, category, subcategory, is_draft, author_id) {
     try {
+      const file_name = uuidv4();
+      const filePath = path.join(__dirname, '../public', `${file_name}.md`);
+
+      await fs.writeFile(filePath, content);
+
       await mysql.query(`
         INSERT INTO articles (title, file_name, category, subcategory, is_approved, author_id, created_at, is_draft)
         VALUES ('${title}', '${file_name}', '${category}', '${subcategory}', ${0}, '${author_id}', NOW(), ${is_draft ? 1 : 0})
       `);
+
       const [[{ article_id }]] = await mysql.query(`SELECT LAST_INSERT_ID() as id`);
       return article_id;
     } catch (e) {

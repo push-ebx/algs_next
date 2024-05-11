@@ -3,8 +3,8 @@ const articleService = require('../services/article-service');
 class ArticleController {
   async createArticle(req, res, next) {
     try {
-      const { title, file_name, category, subcategory, is_draft } = req.body;
-      const id = await articleService.createArticle(title, file_name, category, subcategory, is_draft, req.user_id);
+      const { title, content, category, subcategory, is_draft } = req.body;
+      const id = await articleService.createArticle(title, content, category, subcategory, is_draft, req.user_id);
       return res.send({status: 'ok', success: true, message: 'Статья успешно создана!', data: {id}});
     } catch (e) {
       next(e);
