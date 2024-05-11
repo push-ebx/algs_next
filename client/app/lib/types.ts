@@ -1,3 +1,9 @@
+export interface User {
+  id: number;
+  username: string;
+  role: string;
+}
+
 export interface Article {
   id?: number | null;
   title?: string;
@@ -9,6 +15,7 @@ export interface Article {
   created_at?: string;
   is_draft?: boolean;
   content?: string;
+  author?: User;
 }
 
 export interface ResponseArticles {
@@ -18,6 +25,12 @@ export interface ResponseArticles {
 }
 
 export interface ResponseArticle {
+  success: boolean;
+  message?: string;
+  data?: Article;
+}
+
+export interface ResponseDeleteArticle {
   success: boolean;
   message?: string;
   data?: Article;

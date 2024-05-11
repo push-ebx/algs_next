@@ -22,6 +22,7 @@ router.put("/article/update", authMiddleware, ArticleController.updateArticle);
 router.post("/article/approve-article", authMiddleware, ArticleController.approveArticle);
 router.post("/article/setDraft", authMiddleware, ArticleController.setDraft);
 router.get("/articles/get-tree", ArticleController.getTree);
+router.get("/article/get-random", ArticleController.getRandomArticle);
 
 // router.post("/user/upload", UserController.uploadImage);
 

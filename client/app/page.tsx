@@ -1,13 +1,14 @@
-import {Tree, TreeType} from "@/app/ui";
-import {LayoutTree} from "@/app/ui/layout-tree";
-import {Footer} from "antd/lib/layout/layout";
-import {Content as ContentAntd} from "antd/es/layout/layout";
+import styles from "@/app/article/(article)/article.module.scss";
+import {ArticleTree} from "@/app/ui/article-tree";
+import {ArticleComponent} from "@/app/ui/article";
+import React from "react";
 
 const Content = async () => {
   return (
-    <LayoutTree>
-      Сайт
-    </LayoutTree>
+    <main className={styles.main}>
+      <ArticleTree/>
+      <ArticleComponent isRandom />
+    </main>
   )
 }
 

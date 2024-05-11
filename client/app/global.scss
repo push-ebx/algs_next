@@ -8,6 +8,7 @@
   --red-color: #ff6e6e;
   --green-color: #7fea27;
   --primary-color: #41a0ff;
+  --primary-color-50: rgba(65, 160, 255, 0.5);
   --purple-color: #ba56ff;
   --text-size: 1rem;
   --header-height: 5rem;
@@ -62,7 +63,7 @@ hr {
   }
 
   &-thumb {
-    background-color: #a6b2c3;
+    background-color: var(--primary-color-50);
     border-radius: 5px;
   }
 

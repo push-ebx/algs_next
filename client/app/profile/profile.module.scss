@@ -1,6 +1,9 @@
 .profile {
-  margin-top: calc(var(--header-height) + 20px);
-  color: var(--text-color);
+  margin-top: 1rem;
+
+  .title {
+    margin: 0.5rem;
+  }
 
   .list {
     display: flex;
@@ -9,8 +12,6 @@
     padding: 0 2rem;
     row-gap: 10px;
   }
-
-
 }
 
 .empty {

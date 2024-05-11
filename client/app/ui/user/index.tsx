@@ -1,6 +1,6 @@
 "use client"
 
-import {Avatar, Button, Dropdown, Flex, Skeleton, Space} from 'antd';
+import {Avatar, Button, Dropdown, Flex, Skeleton} from 'antd';
 import {useAuth} from "@/app/lib/hooks/useAuth";
 import Link from "next/link";
 import {useRouter} from "next/navigation";
@@ -56,17 +56,17 @@ export const User = () => {
             <Link href={"/auth"}> <Button>Войти <LoginOutlined /></Button> </Link> :
             <Flex style={{cursor: "pointer"}}>
               <Dropdown menu={{items}}>
-                <Space>
+                <Flex align={"center"} gap={15}>
                   <Avatar
                     style={{
                       backgroundColor: stringToColour(user.username)
                     }}
-                    src={user.avatar_url}
+                    // src={user.avatar_url}
                   >
                     {user.username[0]}
                   </Avatar>
                   <p style={{fontSize: 16}}>{user.username}</p>
-                </Space>
+                </Flex>
               </Dropdown>
             </Flex>
       }
