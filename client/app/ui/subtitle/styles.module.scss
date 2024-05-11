@@ -1,0 +1,17 @@
+.subtitle {
+  color: var(--text-color);
+  font-size: 1.375rem;
+  font-weight: bold;
+  //margin: 20px 0;
+  margin: 1.25rem .4rem;
+
+  &::before {
+    content: "/ ";
+    color: var(--primary-color);
+    position: relative;
+    top: -2px;
+  }
+  @media screen and (max-width: 400px) {
+    //font-size: var(--subtitle-size-xs);
+  }
+}

@@ -1,0 +1,62 @@
+@import "../layout.module";
+
+.article {
+  background: var(--background-article-color);
+  border-radius: 7px;
+
+  .header_image {
+    position: relative !important;
+    border-radius: 7px 7px 0 0;
+  }
+
+  .category_path_author {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    padding: 1.25rem 3.5rem;
+    //margin-top: 20px;
+
+    .category_path, .author {
+      font-size: .8em;
+      color: var(--text-color);
+      opacity: .5;
+    }
+  }
+}
+
+.container {
+  position: relative;
+  height: auto;
+  border-radius: 23px;
+  padding: 0 30px 50px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  overflow-y: hidden;
+
+  .markdown {
+    max-width: 40rem;
+    width: 100%;
+    overflow-y: hidden;
+
+    ::-moz-selection {
+      color: #FFFFFF;
+      background: var(--primary-color);
+    }
+
+    ::selection {
+      color: #FFFFFF;
+      background: var(--primary-color);
+    }
+    //height: 100%;
+  }
+
+  @include for-tablet-down() {
+    html {
+      //font-size: 16px;
+    }
+    border-radius: 0;
+    padding: 50px 10px;
+  }
+}

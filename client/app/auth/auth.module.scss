@@ -1,0 +1,27 @@
+@import "@/app/article/layout.module";;
+
+.main_container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: calc(100vh - var(--header-height) - 20px);
+  margin-top: var(--header-height);
+
+  @include for-desktop-down() {
+    min-height: 100vh;
+  }
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.formWrapper {
+  padding: .5rem 2rem 0rem;
+  border-radius: 10px;
+  width: 400px;
+  background: #ffffff;
+}

@@ -1,0 +1,22 @@
+.code {
+  margin-bottom: 20px;
+  max-width: 90vw;
+  //width: 100%;
+  display: block;
+
+  & > pre {
+    background: #FFFFFF !important;
+  }
+
+  //& > * {
+  //  display: block !important;
+  //  max-width: 100%;
+  //  width: 100%;
+  //}
+  //
+  //& > pre > code {
+  //  display: block !important;
+  //  max-width: 100%;
+  //  width: 100%;
+  //}
+}
