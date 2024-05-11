@@ -10,22 +10,12 @@
     row-gap: 10px;
   }
 
-  .item {
-    border-radius: 7px;
-    display: grid;
-    grid-template-columns: 25px auto repeat(3, 20px);
-    border: 1px solid var(--primary-color);
-    padding: .5rem;
-    width: 100%;
-    align-items: center;
 
-    .number, .delete, .edit, .public {
-      justify-self: center;
-    }
+}
 
-    .title {
-      cursor: pointer;
-      width: auto;
-    }
-  }
+.empty {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
 }
