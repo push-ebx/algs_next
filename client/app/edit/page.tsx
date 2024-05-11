@@ -9,6 +9,7 @@ import clsx from "clsx";
 import {getArticleById, updateArticle} from "@/app/article/api";
 import {Button, Checkbox, Form, Input, message, Modal} from "antd";
 import {createArticle} from "@/app/create/api";
+import {Loader} from "@/app/ui/loader";
 
 export default function Edit() {
   const searchParams = useSearchParams();
@@ -81,19 +82,22 @@ export default function Edit() {
 
   return (
     <div className={styles.editor}>
-      <div className={styles.editor__main}>
-        <CustomMDEditor
-          value={value}
-          setValue={setValue}
-          className={clsx(styles['md-editor'], styles.customMDEditor)}
-        />
-        <CustomMarkdown className={styles['md-viewer']}>
-          {value}
-        </CustomMarkdown>
-        <Button size={"large"} className={styles.save_button} type={"primary"} onClick={() => setOpen(true)}>
-          Сохранить изменения
-        </Button>
-      </div>
+      {
+        !value ? <Loader/> :
+          <div className={styles.editor__main}>
+            <CustomMDEditor
+              value={value}
+              setValue={setValue}
+              className={clsx(styles['md-editor'], styles.customMDEditor)}
+            />
+            <CustomMarkdown className={styles['md-viewer']}>
+              {value}
+            </CustomMarkdown>
+            <Button size={"large"} className={styles.save_button} type={"primary"} onClick={() => setOpen(true)}>
+              Сохранить изменения
+            </Button>
+          </div>
+      }
 
       <Modal
         title="Редактировние статьи"

@@ -9,7 +9,7 @@ import {Loader} from "@/app/ui/loader";
 import {useRouter} from "next/navigation";
 import {Table, Typography, Tooltip, Flex, Empty, Divider, Button, TableProps, message, Popconfirm} from "antd";
 import {CheckOutlined, CloseOutlined, DeleteOutlined, EditOutlined, PlusOutlined} from "@ant-design/icons";
-import {Title} from "@/app/ui";
+import {Subtitle, Title} from "@/app/ui";
 import {Article, ResponseDeleteArticle} from "@/app/lib/types";
 import {deleteArticle} from "@/app/article/api";
 
@@ -130,7 +130,7 @@ export default function Dashboard() {
               articles?.length ?
                 <Flex vertical>
                   <Flex justify={"space-between"} align={"center"}>
-                    <Title className={styles.title}>Список написанных статей</Title>
+                    <Subtitle className={styles.title}>Список написанных статей</Subtitle>
                     <Link href={'/create'}>
                       <Tooltip title={"Создать статью"} placement={"left"}>
                         <Button type={"primary"} shape={"circle"} icon={<PlusOutlined />} />

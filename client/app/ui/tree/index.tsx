@@ -6,8 +6,10 @@ import clsx from 'clsx'
 import Link from 'next/link';
 import * as Icons from './icons'
 import useMeasure from 'react-use-measure'
-import { useSpring, a } from '@react-spring/web'
-import { Title, Frame, Content, toggle } from './styles'
+import {useSpring, a} from '@react-spring/web'
+import {Title, Frame, Content, toggle} from './styles'
+import {Loader} from "@/app/ui/loader";
+import {Flex, Skeleton} from "antd";
 
 export type TreeType = {
   title?: string,
@@ -31,12 +33,12 @@ const Item = React.memo<
   defaultOpen?: boolean
   name?: string | JSX.Element
 }
->(({ children, name, defaultOpen = false }) => {
+>(({children, name, defaultOpen = false}) => {
   const [isOpen, setOpen] = useState(defaultOpen)
   const previous = usePrevious(isOpen)
-  const [ref, { height: viewHeight }] = useMeasure()
-  const { height, opacity, y } = useSpring({
-    from: { height: 0, opacity: 0, y: 0 },
+  const [ref, {height: viewHeight}] = useMeasure()
+  const {height, opacity, y} = useSpring({
+    from: {height: 0, opacity: 0, y: 0},
     to: {
       height: isOpen ? viewHeight : 0,
       opacity: isOpen ? 1 : 0,
@@ -44,40 +46,51 @@ const Item = React.memo<
     },
   })
 
-  const Icon: React.FC<{style?: CSSProperties, onClick?: () => any}> = Icons[`${children ? (isOpen ? 'Minus' : 'Plus') : 'Close'}SquareO`]
+  const Icon: React.FC<{
+    style?: CSSProperties,
+    onClick?: () => any
+  }> = Icons[`${children ? (isOpen ? 'Minus' : 'Plus') : 'Close'}SquareO`]
 
   return (
     <Frame>
-      <Icon style={{ ...toggle, opacity: children ? 1 : 0.5 }} onClick={() => setOpen(!isOpen)} />
+      <Icon style={{...toggle, opacity: children ? 1 : 0.5}} onClick={() => setOpen(!isOpen)}/>
       <Title className={styles.title} onClick={() => setOpen(!isOpen)}>{name}</Title>
       <Content
         style={{
           opacity,
           height: isOpen && previous === isOpen ? 'auto' : height,
         }}>
-        <a.div ref={ref} style={{ y }} children={children} />
+        <a.div ref={ref} style={{y}} children={children}/>
       </Content>
     </Frame>
   )
 })
 
-const Tree = ({tree, className}: Props) => { // add active category and sub and article
+const Tree = ({tree, className}: Props) => {
   return (
     <div className={clsx(styles.tree, className)}>
-      {tree?.child?.length && tree?.child.map((category: TreeType, i) => (
-        <Item defaultOpen name={category.title} key={i}>
-          {category.child?.length && category.child.map((subcategory: TreeType, j) => (
-            <Item defaultOpen name={subcategory.title} key={`${i}.${j}`}>
-              {subcategory.child?.length && subcategory.child.map((article: TreeType, k) => (
-                <Item
-                  key={`${i}.${j}.${k}`}
-                  name={<Link href={`/article?id=${article.id}`}>{article.title}</Link>}
-                />
-              ))}
-            </Item>
-          ))}
-        </Item>
-      ))}
+      {
+        !tree ?
+          <Flex gap={10} vertical>
+            {Array(5).fill(<Skeleton active/>)}
+          </Flex> :
+          <>
+            {tree?.child?.length && tree?.child.map((category: TreeType, i) => (
+              <Item defaultOpen name={category.title} key={i}>
+                {category.child?.length && category.child.map((subcategory: TreeType, j) => (
+                  <Item defaultOpen name={subcategory.title} key={`${i}.${j}`}>
+                    {subcategory.child?.length && subcategory.child.map((article: TreeType, k) => (
+                      <Item
+                        key={`${i}.${j}.${k}`}
+                        name={<Link href={`/article?id=${article.id}`}>{article.title}</Link>}
+                      />
+                    ))}
+                  </Item>
+                ))}
+              </Item>
+            ))}
+          </>
+      }
     </div>
   );
 };
