@@ -3,7 +3,7 @@ import {useAuth} from "@/app/lib/hooks/useAuth";
 import {useRouter} from "next/navigation";
 import React, {useEffect, useState} from "react";
 import {Article, ResponseDeleteArticle, User} from "@/app/lib/types";
-import {assignRole, getArticles, getUsers} from "@/app/profile/api";
+import {assignRole, deleteUser, getArticles, getUsers} from "@/app/profile/api";
 import {deleteArticle} from "@/app/article/api";
 import {
   Button,
@@ -18,8 +18,7 @@ import {
   Tooltip,
   Typography
 } from "antd";
-import {CheckOutlined, CloseOutlined, DeleteOutlined, EditOutlined, PlusOutlined} from "@ant-design/icons";
-import Link from "next/link";
+import {DeleteOutlined} from "@ant-design/icons";
 import {Loader} from "@/app/ui/loader";
 import {Subtitle} from "@/app/ui";
 
@@ -37,17 +36,16 @@ export const Roles = () => {
     }, 500);
   }, []);
 
-  const handleDeleteUser = async (user: User) => {
-    // if (!article.id) return;
-    //
-    // const res: ResponseDeleteArticle =  await deleteArticle({ article_id: article.id });
-    //
-    // if (res.success) {
-    //   setArticles(prev => prev?.filter(_article => _article.id !== article.id));
-    //   message.success('Статья успешно удалена!');
-    // } else {
-    //   message.error(`${res.message}`);
-    // }
+  const handleDeleteUser = async ({user_id}: {user_id: number}) => {
+    if (!user_id) return;
+    const res: ResponseDeleteArticle =  await deleteUser({ user_id });
+
+    if (res.success) {
+      setUsers(prev => prev?.filter(user => user.id !== user_id));
+      message.success(res.message);
+    } else {
+      message.error(`${res.message}`);
+    }
   }
 
   const handleAssignRole = async (role: string, user_id: number) => {
@@ -103,7 +101,7 @@ export const Roles = () => {
           <Popconfirm
             title="Удаление пользователя"
             description={<>Вы действительно хотите <br/> удалить пользователя?</>}
-            onConfirm={() => handleDeleteUser(record)}
+            onConfirm={() => handleDeleteUser({user_id: record.id})}
             okText="Да"
             cancelText="Нет"
           >

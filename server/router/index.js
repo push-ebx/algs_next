@@ -11,6 +11,7 @@ router.post("/auth/registration", AuthController.registration);
 
 router.get("/user/get", authMiddleware, UserController.getUser)
 router.get("/users/get", authMiddleware, UserController.getUsers);
+router.delete("/user/delete", authMiddleware, UserController.deleteUser);
 router.post("/users/assign-role", authMiddleware, UserController.assignRole);
 
 router.post("/article/create", authMiddleware, ArticleController.createArticle);

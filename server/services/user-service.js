@@ -19,6 +19,16 @@ class UserService {
       throw new Error(e.message);
     }
   }
+
+  async deleteUser(user_id) {
+    try {
+      await mysql.query(`
+        DELETE FROM users WHERE id = '${user_id}'
+      `);
+    } catch (e) {
+      throw new Error(e.message);
+    }
+  }
 }
 
 module.exports = new UserService();

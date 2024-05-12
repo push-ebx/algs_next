@@ -83,6 +83,17 @@ class UserController {
       next(e);
     }
   }
+
+  async deleteUser(req, res, next) {
+    try {
+      const { user_id } = req.query;
+
+      await userService.deleteUser(user_id);
+      return res.send({ status: 'ok', success: true, message: 'Пользователь удален!' });
+    } catch (e) {
+      next(e);
+    }
+  }
 }
 
 module.exports = new UserController();
