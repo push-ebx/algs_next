@@ -1,7 +1,9 @@
+export type Role = "admin" | "user" | "moderator";
+
 export interface User {
   id: number;
   username: string;
-  role: string;
+  role: Role;
 }
 
 export interface Article {
@@ -47,4 +49,16 @@ export interface ResponseTree {
   success: boolean;
   message?: string;
   data?: Tree;
+}
+
+export interface ResponseUsers {
+  success: boolean;
+  message?: string;
+  data?: { users: User[] };
+}
+
+export interface GeneralResponse {
+  success: boolean;
+  message?: string;
+  data?: any;
 }

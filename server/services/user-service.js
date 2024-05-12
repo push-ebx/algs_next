@@ -4,7 +4,7 @@ class UserService {
       await mysql.query(`
         UPDATE users 
         SET role = '${role}'
-        WHERE user_id = '${user_id}'
+        WHERE id = '${user_id}'
       `);
     } catch (e) {
       throw new Error(e.message);

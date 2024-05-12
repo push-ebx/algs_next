@@ -79,9 +79,9 @@ class ArticleController {
       if (userRole !== 'moderator' && userRole !== 'admin') {
         return res.status(403).send({ status: 'error', message: 'У вас нет прав на это действие' });
       }
-      const { article_id } = req.query;
+      const { article_id, is_approved } = req.body;
 
-      await articleService.approveArticle(article_id);
+      await articleService.approveArticle(article_id, is_approved);
       return res.send({ status: 'ok', success: true, message: 'Статья успешно одобрена!' });
     } catch (e) {
       next(e);
@@ -102,6 +102,11 @@ class ArticleController {
   async getTree(req, res) {
     const tree = await articleService.getTree();
     return res.send({ status: 'ok', success: true, data: tree });
+  }
+
+  async getAllArticles(req, res) {
+    const articles = await articleService.getAllArticles();
+    return res.send({ status: 'ok', success: true, data: articles });
   }
 }
 

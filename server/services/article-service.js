@@ -107,11 +107,11 @@ class ArticleService {
     }
   }
 
-  async approveArticle(article_id) {
+  async approveArticle(article_id, is_approved) {
     try {
       await mysql.query(`
         UPDATE articles 
-        SET is_approved = 1
+        SET is_approved = ${is_approved ? 1 : 0}
         WHERE id = '${article_id}'
       `);
     } catch (e) {
@@ -135,6 +135,7 @@ class ArticleService {
     try {
       const [data] = await mysql.query(`
       SELECT category, subcategory, title, id FROM articles
+      WHERE is_approved = 1
       ORDER BY category, subcategory, title;
     `);
 
@@ -167,6 +168,20 @@ class ArticleService {
       }
 
       return tree;
+    } catch (error) {
+      throw new Error(error.message);
+    }
+  }
+
+  async getAllArticles() {
+    try {
+      const [articles] = await mysql.query(`
+        SELECT category, subcategory, is_approved, title, articles.id, users.username, users.role FROM articles
+        INNER JOIN users ON users.id = articles.author_id
+        ORDER BY category, subcategory, title;
+      `);
+
+      return articles;
     } catch (error) {
       throw new Error(error.message);
     }

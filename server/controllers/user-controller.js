@@ -51,11 +51,16 @@ class UserController {
   async assignRole(req, res, next) {
     try {
       const userRole = req.role;
-      if (userRole !== 'admin') {
-        return res.status(403).send({ status: 'error', message: 'У вас нет прав на это действие' });
+      const { user_id, role } = req.body;
+
+      if (req.user_id === user_id) {
+        return res.send({ success: false, status: 'error', message: 'Вы не можете изменить себе роль!' });
       }
 
-      const { user_id, role } = req.query;
+      if (userRole !== 'admin') {
+        return res.send({ success: false, status: 'error', message: 'У вас нет прав на это действие!' });
+      }
+
       await userService.assignRole(user_id, role);
       return res.send({ status: 'ok', success: true, message: 'Роль успешно назначена пользователю!' });
     } catch (e) {

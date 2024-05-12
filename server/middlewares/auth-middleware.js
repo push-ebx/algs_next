@@ -1,7 +1,8 @@
 const jwt = require('jsonwebtoken')
 require('dotenv').config({path: "../.env"});
+const userService = require('../services/user-service');
 
-module.exports = function (req, res, next) {
+module.exports = async function (req, res, next) {
   if (req.method === "OPTIONS") {
     next()
   }
@@ -17,8 +18,9 @@ module.exports = function (req, res, next) {
       })
     }
 
-    req.user_id = jwt.verify(token, process.env.SECRET).id
-    req.role = jwt.verify(token, process.env.SECRET).role
+    req.user_id = jwt.verify(token, process.env.SECRET).id;
+    const res = await userService.getUser(req.user_id)
+    req.role = res.role;
     next()
   } catch (e) {
     console.log(e)

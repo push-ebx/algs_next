@@ -4,15 +4,25 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5af6f913-6fff-4041-83f2-2bdc294a99a1" name="Changes" comment="фикс стилей">
-      <change afterPath="$PROJECT_DIR$/client/app/ui/list-articles-written/index.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/app/ui/list-articles-written/styles.module.scss" afterDir="false" />
+    <list default="true" id="5af6f913-6fff-4041-83f2-2bdc294a99a1" name="Changes" comment="бейдж роли в шапке">
+      <change afterPath="$PROJECT_DIR$/client/app/ui/articles-review/index.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/app/ui/articles-review/styles.module.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/app/ui/roles/index.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/app/ui/roles/styles.module.scss" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/app/article/api/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/app/article/api/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/app/lib/types.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/app/lib/types.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/app/profile/api/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/app/profile/api/index.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/app/profile/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/app/profile/page.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/app/profile/profile.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/client/app/profile/profile.module.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/app/ui/article/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/app/ui/article/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/app/ui/header/header.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/client/app/ui/header/header.module.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/app/ui/user/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/app/ui/user/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/app/ui/list-articles-written/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/app/ui/list-articles-written/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/app/ui/list-articles-written/styles.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/client/app/ui/list-articles-written/styles.module.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/controllers/article-controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/controllers/article-controller.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/controllers/user-controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/controllers/user-controller.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/middlewares/auth-middleware.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/middlewares/auth-middleware.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/router/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/router/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/services/article-service.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/services/article-service.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/services/user-service.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/services/user-service.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -57,7 +67,7 @@
   "keyToString": {
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "git-widget-placeholder": "main",
-    "last_opened_file_path": "C:/Users/nikit/WebstormProjects/algs/client/app/ui",
+    "last_opened_file_path": "C:/Users/nikit/WebstormProjects/algs/client/app/ui/articles-review",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -69,11 +79,11 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\nikit\WebstormProjects\algs\client\app\ui\articles-review" />
       <recent name="C:\Users\nikit\WebstormProjects\algs\client\app\ui" />
       <recent name="C:\Users\nikit\WebstormProjects\algs\client\app\ui\article" />
       <recent name="C:\Users\nikit\WebstormProjects\algs\client\app\create" />
       <recent name="C:\Users\nikit\WebstormProjects\algs\client\app\ui\article-row" />
-      <recent name="C:\Users\nikit\WebstormProjects\algs\client\app\ui\user" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\nikit\WebstormProjects\algs\client" />
@@ -100,7 +110,7 @@
       <workItem from="1715110069716" duration="1539000" />
       <workItem from="1715155547873" duration="21000" />
       <workItem from="1715410239044" duration="38548000" />
-      <workItem from="1715499471593" duration="1882000" />
+      <workItem from="1715499471593" duration="9342000" />
     </task>
     <task id="LOCAL-00001" summary="база для бэка: методы для авторизации, пользователей и статей">
       <option name="closed" value="true" />
@@ -222,7 +232,15 @@
       <option name="project" value="LOCAL" />
       <updated>1715462255306</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="бейдж роли в шапке">
+      <option name="closed" value="true" />
+      <created>1715501531475</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1715501531475</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -244,6 +262,7 @@
     <MESSAGE value="фикс стилей страницы со статьей" />
     <MESSAGE value="создание и редактирование статей с antd компонентами +is_draft" />
     <MESSAGE value="фикс стилей" />
-    <option name="LAST_COMMIT_MESSAGE" value="фикс стилей" />
+    <MESSAGE value="бейдж роли в шапке" />
+    <option name="LAST_COMMIT_MESSAGE" value="бейдж роли в шапке" />
   </component>
 </project>

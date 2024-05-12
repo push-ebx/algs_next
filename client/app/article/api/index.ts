@@ -1,7 +1,7 @@
 "use client"
 
 import {$api} from "@/app/api/config";
-import {ResponseArticle, ResponseTree} from "@/app/lib/types";
+import {Article, ResponseArticle, ResponseArticles, ResponseTree} from "@/app/lib/types";
 
 export const getArticleById = async ({article_id}: {article_id: number}): Promise<ResponseArticle> => {
   const res = await $api.get<ResponseArticle>(`/article/get?article_id=${article_id}`);
@@ -36,4 +36,9 @@ export const getTree = async (): Promise<ResponseTree> => {
 export const getRandomArticle = async (): Promise<ResponseArticle> => {
   const res = await $api.get<ResponseArticle>(`/article/get-random`);
   return res.data;
+};
+
+export const getAllArticles = async (): Promise<Article[] | undefined> => {
+  const res = await $api.get<ResponseArticles>(`/articles/get-all`);
+  return res.data.data;
 };
