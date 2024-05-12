@@ -1,6 +1,6 @@
 "use client"
 
-import {Avatar, Button, Dropdown, Flex, Skeleton} from 'antd';
+import {Avatar, Button, Dropdown, Flex, Skeleton, Tag} from 'antd';
 import {useAuth} from "@/app/lib/hooks/useAuth";
 import Link from "next/link";
 import {useRouter} from "next/navigation";
@@ -47,8 +47,23 @@ export const User = () => {
     }
   ];
 
+  const roles = {
+    user: { color: "blue", title: "Пользователь" },
+    moderator: { color: "gold", title: "Модератор" },
+    admin: { color: "green", title: "Администратор" }
+  };
+
   return (
     <Flex align={"center"}>
+      <Flex style={{position: "absolute", left: "2rem"}}>
+        {
+          user?.role ?
+            <Tag color={roles[user?.role].color}>
+              {roles[user?.role].title}
+            </Tag> :
+            <Skeleton.Input active/>
+        }
+      </Flex>
       {
         isFetchingUser ?
           <Skeleton.Input active/> :

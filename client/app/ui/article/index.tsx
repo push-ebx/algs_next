@@ -5,7 +5,6 @@ import styles from "./article.module.scss";
 import {getArticleById, getRandomArticle} from "@/app/article/api";
 import {Article} from "@/app/lib/types";
 import {CustomMarkdown} from "@/app/ui";
-import {Loader} from "@/app/ui/loader";
 import {Flex, Skeleton} from "antd";
 
 export const ArticleComponent = ({isRandom, article_id}: {isRandom?: boolean, article_id?: number}) => {

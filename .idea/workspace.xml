@@ -4,13 +4,27 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5af6f913-6fff-4041-83f2-2bdc294a99a1" name="Changes" comment="база для бэка: методы для авторизации, пользователей и статей">
-      <change beforePath="$PROJECT_DIR$/server/router/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/router/index.js" afterDir="false" />
+    <list default="true" id="5af6f913-6fff-4041-83f2-2bdc294a99a1" name="Changes" comment="фикс стилей">
+      <change afterPath="$PROJECT_DIR$/client/app/ui/list-articles-written/index.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/app/ui/list-articles-written/styles.module.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/app/profile/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/app/profile/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/app/profile/profile.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/client/app/profile/profile.module.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/app/ui/article/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/app/ui/article/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/app/ui/header/header.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/client/app/ui/header/header.module.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/app/ui/user/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/app/ui/user/index.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="TypeScript File" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -32,27 +46,34 @@
   &quot;associatedIndex&quot;: 0
 }</component>
   <component name="ProjectId" id="2g87vHiqu0eZaJEIqMfucGsfYkN" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/nikit/WebstormProjects/algs/server&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;ts.external.directory.path&quot;: &quot;C:\\Users\\nikit\\WebstormProjects\\algs\\client\\node_modules\\typescript\\lib&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "main",
+    "last_opened_file_path": "C:/Users/nikit/WebstormProjects/algs/client/app/ui",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "ts.external.directory.path": "C:\\Users\\nikit\\WebstormProjects\\algs\\client\\node_modules\\typescript\\lib",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\nikit\WebstormProjects\algs\server" />
+      <recent name="C:\Users\nikit\WebstormProjects\algs\client\app\ui" />
+      <recent name="C:\Users\nikit\WebstormProjects\algs\client\app\ui\article" />
+      <recent name="C:\Users\nikit\WebstormProjects\algs\client\app\create" />
+      <recent name="C:\Users\nikit\WebstormProjects\algs\client\app\ui\article-row" />
+      <recent name="C:\Users\nikit\WebstormProjects\algs\client\app\ui\user" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\nikit\WebstormProjects\algs\client" />
@@ -78,6 +99,8 @@
       <workItem from="1715087961177" duration="7330000" />
       <workItem from="1715110069716" duration="1539000" />
       <workItem from="1715155547873" duration="21000" />
+      <workItem from="1715410239044" duration="38548000" />
+      <workItem from="1715499471593" duration="1882000" />
     </task>
     <task id="LOCAL-00001" summary="база для бэка: методы для авторизации, пользователей и статей">
       <option name="closed" value="true" />
@@ -87,7 +110,119 @@
       <option name="project" value="LOCAL" />
       <updated>1715093956619</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="форма авторизации">
+      <option name="closed" value="true" />
+      <created>1715412703499</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1715412703499</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Настройка rtk и antd для ssr">
+      <option name="closed" value="true" />
+      <created>1715414501372</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1715414501372</updated>
+    </task>
+    <task id="LOCAL-00004" summary="фикс авторизации и получение статей">
+      <option name="closed" value="true" />
+      <created>1715420907481</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1715420907481</updated>
+    </task>
+    <task id="LOCAL-00005" summary="страница со списком написанных статей">
+      <option name="closed" value="true" />
+      <created>1715424296738</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1715424296738</updated>
+    </task>
+    <task id="LOCAL-00006" summary="создание статьи; сохранение .md файла на сервере">
+      <option name="closed" value="true" />
+      <created>1715432348929</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1715432348929</updated>
+    </task>
+    <task id="LOCAL-00007" summary="метод дял получения статьи всместе с содержимым">
+      <option name="closed" value="true" />
+      <created>1715432689593</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1715432689593</updated>
+    </task>
+    <task id="LOCAL-00008" summary="фикс .gitignore">
+      <option name="closed" value="true" />
+      <created>1715432722647</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1715432722647</updated>
+    </task>
+    <task id="LOCAL-00009" summary="верстка страницы со статьей">
+      <option name="closed" value="true" />
+      <created>1715438715691</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1715438715692</updated>
+    </task>
+    <task id="LOCAL-00010" summary="редактирование статьи">
+      <option name="closed" value="true" />
+      <created>1715451352549</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1715451352549</updated>
+    </task>
+    <task id="LOCAL-00011" summary="удаление статьи">
+      <option name="closed" value="true" />
+      <created>1715455619559</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1715455619559</updated>
+    </task>
+    <task id="LOCAL-00012" summary="получене рандомной статьи">
+      <option name="closed" value="true" />
+      <created>1715455653390</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1715455653390</updated>
+    </task>
+    <task id="LOCAL-00013" summary="фикс стилей страницы со статьей">
+      <option name="closed" value="true" />
+      <created>1715455684756</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1715455684756</updated>
+    </task>
+    <task id="LOCAL-00014" summary="создание и редактирование статей с antd компонентами +is_draft">
+      <option name="closed" value="true" />
+      <created>1715459429336</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1715459429336</updated>
+    </task>
+    <task id="LOCAL-00015" summary="фикс стилей">
+      <option name="closed" value="true" />
+      <created>1715462255306</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1715462255306</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -95,6 +230,20 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="база для бэка: методы для авторизации, пользователей и статей" />
-    <option name="LAST_COMMIT_MESSAGE" value="база для бэка: методы для авторизации, пользователей и статей" />
+    <MESSAGE value="форма авторизации" />
+    <MESSAGE value="Настройка rtk и antd для ssr" />
+    <MESSAGE value="фикс авторизации и получение статей" />
+    <MESSAGE value="страница со списком написанных статей" />
+    <MESSAGE value="создание статьи; сохранение .md файла на сервере" />
+    <MESSAGE value="метод дял получения статьи всместе с содержимым" />
+    <MESSAGE value="фикс .gitignore" />
+    <MESSAGE value="верстка страницы со статьей" />
+    <MESSAGE value="редактирование статьи" />
+    <MESSAGE value="удаление статьи" />
+    <MESSAGE value="получене рандомной статьи" />
+    <MESSAGE value="фикс стилей страницы со статьей" />
+    <MESSAGE value="создание и редактирование статей с antd компонентами +is_draft" />
+    <MESSAGE value="фикс стилей" />
+    <option name="LAST_COMMIT_MESSAGE" value="фикс стилей" />
   </component>
 </project>
