@@ -47,6 +47,7 @@ export default function Dashboard() {
         user ?
           <Tabs
             size={"large"}
+            // @ts-ignore
             items={tabs.filter(tab => tab.allowedRoles.includes(user.role))}
           /> :
           ""

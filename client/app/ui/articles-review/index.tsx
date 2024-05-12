@@ -36,9 +36,9 @@ export const ArticlesReview = () => {
     getAllArticles().then(data => {
       setArticles(data);
 
-      // setTimeout(() => {
-      //   setIsDelay(false);
-      // }, 500);
+      setTimeout(() => {
+        setIsDelay(false);
+      }, 500);
     });
   }, []);
 
@@ -153,7 +153,7 @@ export const ArticlesReview = () => {
   return (
     <>
       {
-        isFetchingUser && !user?.id ?
+        isFetchingUser && !user?.id || isDelay ?
           <Loader/> :
           <div className={styles.list}>
             {
@@ -195,7 +195,9 @@ export const ArticlesReview = () => {
             <CustomMarkdown className={styles['md-viewer']}>
               {currentArticle.content}
             </CustomMarkdown> :
-            Array(7).fill(<Skeleton active/>)
+            <Flex vertical gap={5}>
+              {Array(7).fill(<Skeleton active/>)}
+            </Flex>
         }
       </Modal>
     </>

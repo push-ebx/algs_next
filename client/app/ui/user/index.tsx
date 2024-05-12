@@ -61,7 +61,9 @@ export const User = () => {
             <Tag color={roles[user?.role].color}>
               {roles[user?.role].title}
             </Tag> :
-            <Skeleton.Input active/>
+            isFetchingUser ?
+            <Skeleton.Input active/> :
+              ""
         }
       </Flex>
       {

@@ -31,6 +31,10 @@ export const Roles = () => {
 
   useEffect(() => {
     getUsers().then(setUsers);
+
+    setTimeout(() => {
+      setIsDelay(false);
+    }, 500);
   }, []);
 
   const handleDeleteUser = async (user: User) => {
@@ -119,7 +123,7 @@ export const Roles = () => {
   return (
     <>
       {
-        isFetchingUser && !user?.id ?
+        isFetchingUser && !user?.id || isDelay ?
           <Loader/> :
           <div className={styles.list}>
             {

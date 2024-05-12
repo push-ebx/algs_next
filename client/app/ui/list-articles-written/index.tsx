@@ -21,9 +21,9 @@ export const ListArticlesWritten = () => {
     getArticles().then(data => {
       setArticles(data);
 
-      // setTimeout(() => {
-      //   setIsDelay(false);
-      // }, 500);
+      setTimeout(() => {
+        setIsDelay(false);
+      }, 500);
     });
   }, []);
 
@@ -121,7 +121,7 @@ export const ListArticlesWritten = () => {
   return (
     <>
       {
-        isFetchingUser && !user?.id ?
+        isFetchingUser && !user?.id || isDelay ?
           <Loader/> :
           <div className={styles.list}>
             {
@@ -143,7 +143,12 @@ export const ListArticlesWritten = () => {
                     pagination={{ defaultPageSize: 10, position: ["bottomCenter"] }}
                   />
                 </Flex> :
-                <Empty className={styles.empty} description={"Вы еще не написал ни одной статьи!"} />
+                <Flex className={styles.empty} vertical gap={10} align={"center"}>
+                  <Empty description={"Вы еще не написал ни одной статьи!"} />
+                  <Tooltip title={"Создать статью"} placement={"left"}>
+                    <Button type={"primary"} shape={"circle"} icon={<PlusOutlined />} />
+                  </Tooltip>
+                </Flex>
             }
           </div>
       }

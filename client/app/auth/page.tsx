@@ -13,19 +13,6 @@ import {useRouter} from 'next/navigation'
 import {useAuth} from "@/app/lib/hooks/useAuth";
 import {UploadChangeParam} from "antd/es/upload";
 
-
-const beforeUpload = (file: any) => {
-  const isJpgOrPng = file.type === 'image/jpeg' || file.type === 'image/png';
-  if (!isJpgOrPng) {
-    message.error('You can only upload JPG/PNG file!');
-  }
-  const isLt2M = file.size / 1024 / 1024 < 2;
-  if (!isLt2M) {
-    message.error('Image must smaller than 2MB!');
-  }
-  return isJpgOrPng && isLt2M;
-};
-
 const {TabPane} = Tabs;
 
 export default function Auth() {
@@ -46,7 +33,7 @@ export default function Auth() {
   }
 
   const handleRegistration = async () => {
-    const res = await registration({username, password, url: imageUrl});
+    const res = await registration({username, password});
 
     if (res.success) {
       message.success('Регистрация прошла успешно!');
@@ -66,24 +53,6 @@ export default function Auth() {
       message.error(`${res.message}`);
     }
   };
-
-  const [imageUrl, setImageUrl] = useState();
-  const handleChange = (info: UploadChangeParam<UploadFile<any>>) => {
-    if (info.file.status === 'uploading') {
-      setLoading(true);
-      return;
-    }
-    if (info.file.status === 'done') {
-      setImageUrl(info.file.response.url);
-      setLoading(false);
-    }
-  };
-  const uploadButton = (
-    <button style={{border: 0, background: 'none'}} type="button">
-      {loading ? <LoadingOutlined/> : <PlusOutlined/>}
-      <div style={{marginTop: 8}}>Upload</div>
-    </button>
-  );
 
   return (
     <>
@@ -158,27 +127,6 @@ export default function Auth() {
                         ]}
                       >
                         <Input.Password/>
-                      </Form.Item>
-                      <Form.Item
-                        label="Аватар"
-                        name="avatar"
-                      >
-                        <Upload
-                          name="avatar"
-                          listType="picture-circle"
-                          className="avatar-uploader"
-                          showUploadList={false}
-                          action="http://localhost:4000/upload"
-                          beforeUpload={beforeUpload}
-                          onChange={handleChange}
-                        >
-                          {imageUrl ? <img src={imageUrl} alt="avatar" style={{
-                            width: '100%',
-                            borderRadius: "50%",
-                            objectFit: 'cover',
-                            height: '100%'
-                          }}/> : uploadButton}
-                        </Upload>
                       </Form.Item>
                       <Form.Item>
                         <Button type="primary" htmlType="submit">Зарегистрироваться</Button>

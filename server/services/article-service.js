@@ -135,7 +135,7 @@ class ArticleService {
     try {
       const [data] = await mysql.query(`
       SELECT category, subcategory, title, id FROM articles
-      WHERE is_approved = 1
+      WHERE is_approved = 1 AND is_draft = 0
       ORDER BY category, subcategory, title;
     `);
 
@@ -178,6 +178,7 @@ class ArticleService {
       const [articles] = await mysql.query(`
         SELECT category, subcategory, is_approved, title, articles.id, users.username, users.role FROM articles
         INNER JOIN users ON users.id = articles.author_id
+        WHERE is_draft = 0
         ORDER BY category, subcategory, title;
       `);
 
