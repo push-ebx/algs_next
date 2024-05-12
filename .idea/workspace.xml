@@ -4,15 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5af6f913-6fff-4041-83f2-2bdc294a99a1" name="Changes" comment="просмотр статьи в модалке в лк">
+    <list default="true" id="5af6f913-6fff-4041-83f2-2bdc294a99a1" name="Changes" comment=".sql">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/app/auth/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/app/auth/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/app/profile/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/app/profile/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/app/ui/articles-review/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/app/ui/articles-review/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/app/ui/list-articles-written/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/app/ui/list-articles-written/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/app/ui/roles/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/app/ui/roles/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/app/ui/user/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/app/ui/user/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/services/article-service.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/services/article-service.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -57,7 +50,7 @@
   "keyToString": {
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "git-widget-placeholder": "main",
-    "last_opened_file_path": "C:/Users/nikit/Desktop/ScheduleScribe",
+    "last_opened_file_path": "C:/Users/nikit/WebstormProjects/algs",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -69,11 +62,11 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\nikit\WebstormProjects\algs" />
       <recent name="C:\Users\nikit\WebstormProjects\algs\client\app\ui\articles-review" />
       <recent name="C:\Users\nikit\WebstormProjects\algs\client\app\ui" />
       <recent name="C:\Users\nikit\WebstormProjects\algs\client\app\ui\article" />
       <recent name="C:\Users\nikit\WebstormProjects\algs\client\app\create" />
-      <recent name="C:\Users\nikit\WebstormProjects\algs\client\app\ui\article-row" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\nikit\WebstormProjects\algs\client" />
@@ -101,6 +94,7 @@
       <workItem from="1715155547873" duration="21000" />
       <workItem from="1715410239044" duration="38548000" />
       <workItem from="1715499471593" duration="14612000" />
+      <workItem from="1715524070509" duration="2804000" />
     </task>
     <task id="LOCAL-00001" summary="база для бэка: методы для авторизации, пользователей и статей">
       <option name="closed" value="true" />
@@ -254,7 +248,15 @@
       <option name="project" value="LOCAL" />
       <updated>1715513140352</updated>
     </task>
-    <option name="localTasksCounter" value="20" />
+    <task id="LOCAL-00020" summary=".sql">
+      <option name="closed" value="true" />
+      <created>1715524110963</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1715524110963</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -280,6 +282,7 @@
     <MESSAGE value="разделение по ролям" />
     <MESSAGE value="одобрение статьи" />
     <MESSAGE value="просмотр статьи в модалке в лк" />
-    <option name="LAST_COMMIT_MESSAGE" value="просмотр статьи в модалке в лк" />
+    <MESSAGE value=".sql" />
+    <option name="LAST_COMMIT_MESSAGE" value=".sql" />
   </component>
 </project>

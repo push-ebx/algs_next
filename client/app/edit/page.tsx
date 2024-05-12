@@ -17,13 +17,6 @@ export default function Edit() {
   const router = useRouter();
 
   const [value, setValue] = useState<string | undefined>();
-  const [title, setTitle] = useState<string | undefined>();
-  const [header_image, setHeaderImage] = useState<string | undefined>();
-  const [author, setAuthor] = useState<string | undefined>();
-  const [category, setCategory] = useState<string | undefined>();
-  const [subcategory, setSubcategory] = useState<string | undefined>();
-  const [is_draft, setIsDraft] = useState<boolean | undefined>(false);
-  const [isOpen, setIsOpen] = useState<boolean>(false);
   const [article, setArticle] = useState<Article>();
 
   const [open, setOpen] = useState(false);
@@ -119,23 +112,26 @@ export default function Edit() {
           <Form.Item
             name="title"
             label="Название статьи:"
+            initialValue={article?.title}
             rules={[{required: true, message: 'Пожалуйста, введите название статьи'}]}
           >
-            <Input defaultValue={article?.title}/>
+            <Input/>
           </Form.Item>
           <Form.Item
             name="category"
             label="Категория:"
+            initialValue={article?.category}
             rules={[{required: true, message: 'Пожалуйста, введите категорию статьи'}]}
           >
-            <Input defaultValue={article?.category}/>
+            <Input/>
           </Form.Item>
           <Form.Item
             name="subcategory"
             label="Подкатегория:"
+            initialValue={article?.subcategory}
             rules={[{required: true, message: 'Пожалуйста, введите подкатегорию статьи'}]}
           >
-            <Input defaultValue={article?.subcategory}/>
+            <Input/>
           </Form.Item>
           <Form.Item
             name="is_draft"
