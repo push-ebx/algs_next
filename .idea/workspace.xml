@@ -4,25 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5af6f913-6fff-4041-83f2-2bdc294a99a1" name="Changes" comment="бейдж роли в шапке">
-      <change afterPath="$PROJECT_DIR$/client/app/ui/articles-review/index.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/app/ui/articles-review/styles.module.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/app/ui/roles/index.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/app/ui/roles/styles.module.scss" afterDir="false" />
+    <list default="true" id="5af6f913-6fff-4041-83f2-2bdc294a99a1" name="Changes" comment="одобрение статьи">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/app/article/api/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/app/article/api/index.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/app/lib/types.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/app/lib/types.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/app/profile/api/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/app/profile/api/index.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/app/profile/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/app/profile/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/app/profile/profile.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/client/app/profile/profile.module.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/app/ui/list-articles-written/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/app/ui/list-articles-written/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/app/ui/articles-review/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/app/ui/articles-review/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/app/ui/articles-review/styles.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/client/app/ui/articles-review/styles.module.scss" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/app/ui/list-articles-written/styles.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/client/app/ui/list-articles-written/styles.module.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/controllers/article-controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/controllers/article-controller.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/controllers/user-controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/controllers/user-controller.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/middlewares/auth-middleware.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/middlewares/auth-middleware.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/router/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/router/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/services/article-service.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/services/article-service.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/services/user-service.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/services/user-service.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -110,7 +96,7 @@
       <workItem from="1715110069716" duration="1539000" />
       <workItem from="1715155547873" duration="21000" />
       <workItem from="1715410239044" duration="38548000" />
-      <workItem from="1715499471593" duration="9342000" />
+      <workItem from="1715499471593" duration="10194000" />
     </task>
     <task id="LOCAL-00001" summary="база для бэка: методы для авторизации, пользователей и статей">
       <option name="closed" value="true" />
@@ -240,7 +226,23 @@
       <option name="project" value="LOCAL" />
       <updated>1715501531475</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="разделение по ролям">
+      <option name="closed" value="true" />
+      <created>1715512087395</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1715512087395</updated>
+    </task>
+    <task id="LOCAL-00018" summary="одобрение статьи">
+      <option name="closed" value="true" />
+      <created>1715512101433</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1715512101433</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -263,6 +265,8 @@
     <MESSAGE value="создание и редактирование статей с antd компонентами +is_draft" />
     <MESSAGE value="фикс стилей" />
     <MESSAGE value="бейдж роли в шапке" />
-    <option name="LAST_COMMIT_MESSAGE" value="бейдж роли в шапке" />
+    <MESSAGE value="разделение по ролям" />
+    <MESSAGE value="одобрение статьи" />
+    <option name="LAST_COMMIT_MESSAGE" value="одобрение статьи" />
   </component>
 </project>

@@ -4,18 +4,33 @@ import {useRouter} from "next/navigation";
 import React, {useEffect, useState} from "react";
 import {Article, ResponseDeleteArticle} from "@/app/lib/types";
 import {getArticles, setApproveArticle} from "@/app/profile/api";
-import {deleteArticle, getAllArticles} from "@/app/article/api";
-import {Button, Divider, Empty, Flex, message, Popconfirm, Switch, Table, TableProps, Tooltip, Typography} from "antd";
-import {CheckOutlined, CloseOutlined, DeleteOutlined, EditOutlined, PlusOutlined} from "@ant-design/icons";
+import {deleteArticle, getAllArticles, getArticleById} from "@/app/article/api";
+import {
+  Button,
+  Divider,
+  Empty,
+  Flex,
+  message,
+  Modal,
+  Popconfirm, Skeleton,
+  Switch,
+  Table,
+  TableProps,
+  Tooltip,
+  Typography
+} from "antd";
+import { DeleteOutlined, PlusOutlined} from "@ant-design/icons";
 import Link from "next/link";
 import {Loader} from "@/app/ui/loader";
-import {Subtitle} from "@/app/ui";
+import {CustomMarkdown, Subtitle} from "@/app/ui";
 
 export const ArticlesReview = () => {
   const {user, isFetching: isFetchingUser} = useAuth();
   const router = useRouter();
   const [articles, setArticles] = useState<Article[]>();
   const [isDelay, setIsDelay] = useState(true);
+  const [open, setOpen] = useState(false);
+  const [currentArticle, setCurrentArticle] = useState<Article | null>();
 
   useEffect(() => {
     getAllArticles().then(data => {
@@ -49,6 +64,12 @@ export const ArticlesReview = () => {
     } else {
       message.error(`${res?.message}`);
     }
+  }
+
+  const handleViewButton = async ({article_id}: {article_id: number}) => {
+    setOpen(true);
+    const res = await getArticleById({article_id});
+    setCurrentArticle(res?.data);
   }
 
   const columns: TableProps<Article>['columns'] = [
@@ -90,6 +111,17 @@ export const ArticlesReview = () => {
           defaultChecked={is_approved}
           onChange={check => handleSetApprove({article_id: article.id!, is_approved: check})}
         />
+      )
+    },
+    {
+      title: 'Просмотр',
+      key: 'view',
+      align: 'center',
+      render: (_, article) => (
+        <Button type={"primary"} onClick={() => handleViewButton({article_id: article.id!})}
+        >
+          Подробнее
+        </Button>
       )
     },
     {
@@ -147,6 +179,25 @@ export const ArticlesReview = () => {
             }
           </div>
       }
+
+      <Modal
+        title={"Просмотр статьи"}
+        open={open}
+        onCancel={() => {
+          setOpen(false);
+          setCurrentArticle(null);
+        }}
+        centered
+        footer={[]}
+      >
+        {
+          currentArticle ?
+            <CustomMarkdown className={styles['md-viewer']}>
+              {currentArticle.content}
+            </CustomMarkdown> :
+            Array(7).fill(<Skeleton active/>)
+        }
+      </Modal>
     </>
   );
 };
