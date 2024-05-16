@@ -19,7 +19,6 @@ export const CustomMDEditor = (props: Props) => {
       visibleDragbar={false}
       onChange={props.setValue}
       preview='edit'
-
       style={props.style}
     />
   );

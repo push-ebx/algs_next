@@ -3,4 +3,8 @@
   //border: 1px #555555 solid;
   box-shadow: none;
   overflow-y: scroll;
+
+  button[data-name="live"], button[data-name="preview"], button[data-name="image"], button[data-name="table"] {
+    display: none;
+  }
 }
