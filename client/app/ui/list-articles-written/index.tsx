@@ -46,6 +46,7 @@ export const ListArticlesWritten = () => {
       dataIndex: 'title',
       key: 'title',
       align: 'center',
+      width: 350,
       render: (text) => <Typography.Title level={5}>{text}</Typography.Title>,
     },
     {
@@ -139,7 +140,8 @@ export const ListArticlesWritten = () => {
                   <Table
                     columns={columns}
                     dataSource={articles}
-                    scroll={{ x: 100 }}
+                    scroll={{ x: 1500 }}
+                    bordered
                     pagination={{ defaultPageSize: 10, position: ["bottomCenter"] }}
                   />
                 </Flex> :

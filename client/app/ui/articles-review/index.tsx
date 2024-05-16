@@ -171,7 +171,8 @@ export const ArticlesReview = () => {
                   <Table
                     columns={columns}
                     dataSource={articles}
-                    scroll={{ x: 100 }}
+                    bordered
+                    scroll={{ x: 1500 }}
                     pagination={{ defaultPageSize: 10, position: ["bottomCenter"] }}
                   />
                 </Flex> :
