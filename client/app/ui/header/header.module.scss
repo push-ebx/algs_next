@@ -7,9 +7,13 @@
   justify-content: end;
   box-shadow: var(--header-box-shadow);
   align-items: center;
-  padding: 0 2rem;
+  padding: 0 32px;
   background: var(--background-header-color);
   height: var(--header-height);
+
+  @include for-small-tablet-down() {
+    padding: 0 8px;
+  }
 
   .logo {
     position: absolute;
