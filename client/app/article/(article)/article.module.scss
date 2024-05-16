@@ -3,8 +3,19 @@
 .main {
   display: grid;
   grid-template-columns: 400px auto;
-  gap: 3rem;
-  padding: 1rem 6rem 1rem 3rem;
-  height: calc(100vh - var(--header-height));
+  gap: 45px;
+  padding: 15px 50px;
   overflow-y: hidden;
+
+  @include for-desktop-down() {
+    gap: 25px;
+    grid-template-columns: 300px auto;
+    padding: 15px 20px;
+    //max-width: 450px;
+  }
+
+  @include for-small-tablet-down() {
+    grid-template-columns: 1fr;
+    padding: 0;
+  }
 }

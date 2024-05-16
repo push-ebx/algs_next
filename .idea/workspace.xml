@@ -4,9 +4,21 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5af6f913-6fff-4041-83f2-2bdc294a99a1" name="Changes" comment="фикс валидации в модалке на странице редактирования">
-      <change beforePath="$PROJECT_DIR$/server/controllers/user-controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/controllers/user-controller.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/services/user-service.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/services/user-service.js" afterDir="false" />
+    <list default="true" id="5af6f913-6fff-4041-83f2-2bdc294a99a1" name="Changes" comment="фикс кнопки создания">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/.idea/algs.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/.idea/codeStyles/codeStyleConfig.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/.idea/watcherTasks.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/app/article/(article)/article.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/client/app/article/(article)/article.module.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/app/article/layout.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/client/app/article/layout.module.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/app/global.scss" beforeDir="false" afterPath="$PROJECT_DIR$/client/app/global.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/app/ui/article-tree/article-tree.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/client/app/ui/article-tree/article-tree.module.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/app/ui/article-tree/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/app/ui/article-tree/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/app/ui/article/article.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/client/app/ui/article/article.module.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/app/ui/layout-tree/styles.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/client/app/ui/layout-tree/styles.module.scss" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -96,7 +108,16 @@
       <workItem from="1715410239044" duration="38548000" />
       <workItem from="1715499471593" duration="14612000" />
       <workItem from="1715524070509" duration="2804000" />
-      <workItem from="1715535642197" duration="494000" />
+      <workItem from="1715535642197" duration="2032000" />
+      <workItem from="1715584511570" duration="17000" />
+      <workItem from="1715620508614" duration="4329000" />
+      <workItem from="1715793536704" duration="12000" />
+      <workItem from="1715794452653" duration="1644000" />
+      <workItem from="1715797709464" duration="1114000" />
+      <workItem from="1715800014430" duration="3401000" />
+      <workItem from="1715848198112" duration="10000" />
+      <workItem from="1715875965293" duration="248000" />
+      <workItem from="1715890936613" duration="2991000" />
     </task>
     <task id="LOCAL-00001" summary="база для бэка: методы для авторизации, пользователей и статей">
       <option name="closed" value="true" />
@@ -266,7 +287,23 @@
       <option name="project" value="LOCAL" />
       <updated>1715535897968</updated>
     </task>
-    <option name="localTasksCounter" value="22" />
+    <task id="LOCAL-00022" summary="уаделение пользователей">
+      <option name="closed" value="true" />
+      <created>1715536397725</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1715536397725</updated>
+    </task>
+    <task id="LOCAL-00023" summary="фикс кнопки создания">
+      <option name="closed" value="true" />
+      <created>1715876157020</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1715876157020</updated>
+    </task>
+    <option name="localTasksCounter" value="24" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -294,6 +331,8 @@
     <MESSAGE value="просмотр статьи в модалке в лк" />
     <MESSAGE value=".sql" />
     <MESSAGE value="фикс валидации в модалке на странице редактирования" />
-    <option name="LAST_COMMIT_MESSAGE" value="фикс валидации в модалке на странице редактирования" />
+    <MESSAGE value="уаделение пользователей" />
+    <MESSAGE value="фикс кнопки создания" />
+    <option name="LAST_COMMIT_MESSAGE" value="фикс кнопки создания" />
   </component>
 </project>

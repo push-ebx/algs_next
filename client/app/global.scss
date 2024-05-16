@@ -29,7 +29,7 @@
 html,
 body {
   overflow-x: hidden;
-  font-size: 1vw;
+  font-size: 16px;
 
   @include for-desktop-down() {
     font-size: 16px;

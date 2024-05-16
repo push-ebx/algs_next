@@ -1,7 +1,11 @@
 @mixin for-desktop-down {
-  @media (max-width: 1400px) { @content; }
+  @media (max-width: 1300px) { @content; }
 }
 
 @mixin for-tablet-down {
   @media (max-width: 1070px) { @content; }
+}
+
+@mixin for-small-tablet-down {
+  @media (max-width: 870px) { @content; }
 }
