@@ -145,9 +145,11 @@ export const ListArticlesWritten = () => {
                 </Flex> :
                 <Flex className={styles.empty} vertical gap={10} align={"center"}>
                   <Empty description={"Вы еще не написал ни одной статьи!"} />
-                  <Tooltip title={"Создать статью"} placement={"left"}>
-                    <Button type={"primary"} shape={"circle"} icon={<PlusOutlined />} />
-                  </Tooltip>
+                  <Link href={'/create'}>
+                    <Tooltip title={"Создать статью"} placement={"left"}>
+                      <Button type={"primary"} shape={"circle"} icon={<PlusOutlined />} />
+                    </Tooltip>
+                  </Link>
                 </Flex>
             }
           </div>
