@@ -12,13 +12,20 @@
   height: var(--header-height);
 
   @include for-small-tablet-down() {
-    padding: 0 8px;
+    padding: 0 32px;
+    justify-content: space-between;
   }
 
   .logo {
     position: absolute;
     left: 50%;
     transform: translate(-50%, 0);
+
+    @include for-small-tablet-down() {
+      position: relative;
+      left: 0;
+      transform: translate(0, 0);
+    }
 
     span {
       font-size: 2rem;

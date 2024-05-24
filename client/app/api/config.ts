@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-export const API_URL = `http://localhost:4000/api`
+export const API_URL = `https://server.schedule-scribe.ru/api`
 
 export const $api = axios.create({
   baseURL: API_URL

@@ -7,6 +7,7 @@ import {useRouter} from "next/navigation";
 import {useDispatch} from "react-redux";
 import {setUser} from "@/app/lib/features/user/userSlice";
 import {LoginOutlined} from "@ant-design/icons";
+import styles from "./styles.module.scss";
 
 const stringToColour = (str: string) => {
   let hash = 0;
@@ -55,7 +56,7 @@ export const User = () => {
 
   return (
     <Flex align={"center"}>
-      <Flex style={{position: "absolute", left: "2rem"}}>
+      <Flex className={styles.role}>
         {
           user?.role ?
             <Tag color={roles[user?.role].color}>

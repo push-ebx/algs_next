@@ -8,7 +8,6 @@ import {Article} from "@/app/lib/types";
 import clsx from "clsx";
 import {getArticleById, updateArticle} from "@/app/article/api";
 import {Button, Checkbox, Form, Input, message, Modal} from "antd";
-import {createArticle} from "@/app/create/api";
 import {Loader} from "@/app/ui/loader";
 
 export default function Edit() {

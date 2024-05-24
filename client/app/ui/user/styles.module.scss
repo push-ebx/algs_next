@@ -1,3 +1,10 @@
-.user {
+@import "@/app/article/layout.module";
 
+.role {
+  position: absolute;
+  left: 32px;
+
+  @include for-small-tablet-down() {
+    display: none !important;
+  }
 }
